@@ -698,9 +698,9 @@ class FTDrawer {
 		
 		var temp_photo_link;
 		if (node.get_gender().toLowerCase()==='male') {
-			temp_photo_link="../photo/male150x150.jpg";
+			temp_photo_link="photo/male150x150.jpg";
 		} else {
-			temp_photo_link="../photo/female150x150.jpg";		
+			temp_photo_link="photo/female150x150.jpg";		
 		}
         var content = `
                 <span style='margin-left: 2.5px;'><b>` + node.get_name() + `</b></span><br>
