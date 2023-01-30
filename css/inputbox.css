@@ -50,7 +50,7 @@ body {
 
 input {
   font-family: inherit;
-  line-height: 27px;
+  line-height: inherit;
   color: #2e3750;
   min-width: 15em;
   font-size: 1.3em;
