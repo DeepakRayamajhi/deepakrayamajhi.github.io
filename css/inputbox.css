@@ -52,7 +52,8 @@ input {
   font-family: inherit;
   line-height: 27px;
   color: #2e3750;
-  min-width: 12em;
+  min-width: 15em;
+  font-size: 1.3em;
 }
 
 

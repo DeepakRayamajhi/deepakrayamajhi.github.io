@@ -19,7 +19,7 @@ body {
 
 
 .leftPanel {
-	width: 10%;
+	width: 20%;
 	
 	
 	
@@ -27,7 +27,7 @@ body {
 }
 
 #rightPanel {
-	width: 87%;
+	width: 77%;
 	height:100%;
 	float:left;
 	background:black;
