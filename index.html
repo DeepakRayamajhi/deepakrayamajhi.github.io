@@ -19,9 +19,9 @@
 -->
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/inputbox.css">
+    <meta charset="UTF-8">	
+	<link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/main.css">	
 </head>
 
 <body>
@@ -30,13 +30,14 @@
 	
 	<div >
 		<div class="leftPanel">
-		<p>
-			<span class="input">
-				<input type="text" placeholder="Search Name">
-				<span></span>	
-			</span>
-		</p>		
-			
+		
+		<form action="" class="search-bar">
+		  <input type="search" id="searchItem" name="search" placeholder="Search Name">
+		  <button class="search-btn" type="submit" onclick="myFunction()" >
+			<span >Search</span>
+		  </button>
+		</form>
+		  
 		</div>
 	
 		<div id ="rightPanel">
@@ -67,5 +68,13 @@
 	
    </div>
 	
+	 <script>
+      
+    // Here the value is stored in new variable x 
+    function myFunction() {
+        var x = document.getElementById("searchItem").value;        
+		window.alert("Entered Name: " +x + " Search Implemenation yet to apply");
+    }
+    </script>
 	
 </body>
