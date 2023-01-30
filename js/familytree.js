@@ -703,7 +703,7 @@ class FTDrawer {
 			temp_photo_link="photo/female150x150.jpg";		
 		}
         var content = `
-                <span style='margin-left: 2.5px;'><b>` + node.get_name() + `</b></span><br>
+                <span style='margin-left: 2.5px;' class="name"><b >` + node.get_name() + `</b></span><br>
                 <table style="margin-top: 2.5px;">
 						<tr><img src = "` + temp_photo_link + `"></tr>
                         <tr><td>DOB:</td><td>` + (node.get_birth_year() || "?") + `</td> </tr> <tr><td> Birthplace: ` + (node.data.birthplace || "?") + `</td></tr>
@@ -839,17 +839,27 @@ class FTDrawer {
             nodeEnter
                 .on("mouseover", function (event, d) {
                     tooltip_div.transition()
-                        .duration(200)
-                        .style("opacity", undefined);
+                        .duration(1000)
+                        .style("opacity", 1);
                     tooltip_div.html(tooltip_func(d));
                     let height = tooltip_div.node().getBoundingClientRect().height;
-                    tooltip_div.style("left", (event.pageX + 60) + "px")
+                    // tooltip_div.style("left", (event.pageX + 60) + "px")
+						tooltip_div.style("left", (event.pageX - 210) + "px")
                         .style("top", (event.pageY-height/2) + "px");
                 })
-                .on("mouseout", function (d) {
-                    tooltip_div.transition()
-                        .duration(500)
-                        .style("opacity", 0);
+                .on("mouseout",  function (event, d) {
+                    // tooltip_div.transition()
+                        // .duration(1000)
+                        // .style("opacity", 0.25);
+						
+				 tooltip_div.transition()
+                        .duration(1)
+                        .style("opacity", undefined);
+                    tooltip_div.html(tooltip_func(d));
+                    let height = tooltip_div.node().getBoundingClientRect().height;                 
+						tooltip_div.style("left", (event.pageX - 10000) + "px")
+                        .style("top", (event.pageY-height/2) + "px");
+						
                 });
         };
 

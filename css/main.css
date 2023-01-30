@@ -86,12 +86,20 @@ p {
 
 .tooltip {
     position: absolute;
-	offset-distance: 400px;
-    font: 24px sans-serif;
+	/* offset-distance: 400px; */
+    font: 16px sans-serif;
     padding: 12px;
-    /* background: rgba(0, 0, 0, 0.8); */
-	background:rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
+	/* background:#6E3460; */
+	background: #003366;	
     color: yellow;
     border-radius: 2px;
+	width:150px;
+	border-radius: 1.5em;
 	
+}
+
+.name {
+	font: 20px sans-serif;
+	 color: Yellow;
 }
