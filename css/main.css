@@ -101,9 +101,12 @@ p {
 
 .tooltip {
     position: absolute;
+	offset-distance: 400px;
     font: 14px sans-serif;
     padding: 12px;
-    background: rgba(0, 0, 0, 0.8);
+    /* background: rgba(0, 0, 0, 0.8); */
+	background:rgba(0, 0, 0, 0.8);
     color: yellow;
     border-radius: 2px;
+	
 }
