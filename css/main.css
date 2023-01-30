@@ -10,31 +10,16 @@ body {
 	font: 24px sans-serif;
 	font-weight: bold;
 	color: Yellow;
-	text-align :center;
-	background: none;
-	
-	
-}
-
-
-
-.leftPanel {
-	width: 20%;
-	
+	text-align: center;
 	
 	
 	
 }
+/* table,td {	 */
+	/* border: 1px solid #cccccc; */
+/* } */
 
-#rightPanel {
-	width: 77%;
-	height:100%;
-	float:left;
-	background:black;
-	margin:10px;
-	
-	
-}
+
 
 /* Clear floats after the columns */
 /* .row:after { */
@@ -102,7 +87,7 @@ p {
 .tooltip {
     position: absolute;
 	offset-distance: 400px;
-    font: 14px sans-serif;
+    font: 24px sans-serif;
     padding: 12px;
     /* background: rgba(0, 0, 0, 0.8); */
 	background:rgba(0, 0, 0, 0.8);

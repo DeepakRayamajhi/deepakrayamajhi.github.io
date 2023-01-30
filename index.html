@@ -25,22 +25,29 @@
 </head>
 
 <body>
-    
-	<h1 class="header"> Family Tree of Rayamajhi</h1>
+    	
 	
-	<div >
-		<div class="leftPanel">
-		
+	
+	 <table style='width:99%;'>
+	 <tr> 
+		<td style='width:20%;'>
 		<form action="" class="search-bar">
 		  <input type="search" id="searchItem" name="search" placeholder="Search Name">
 		  <button class="search-btn" type="submit" onclick="myFunction()" >
 			<span >Search</span>
 		  </button>
 		</form>
-		  
-		</div>
-	
-		<div id ="rightPanel">
+		
+		</td>
+		
+		<td class="header" style='width:40%;'> Rayamajhi Family Tree</td>	
+		<td class="header" style='width:20%;'></td>
+	 
+	 </tr>
+	 
+	 </table>
+	 
+		
 		<script src="https://d3js.org/d3.v7.min.js"></script>
 		<script src="js/d3-dag.js"></script>
 		<script src="data/data_Sample.js"></script>
@@ -48,7 +55,7 @@
 	
 		 <script>
 			// insert svg object to hold the family tree
-			const svg = d3.select("#rightPanel").append("svg")
+			const svg = d3.select("body").append("svg")
 				.attr("width", document.body.offsetWidth)
 				.attr("height", document.documentElement.clientHeight);
 
@@ -64,16 +71,13 @@
 		   // setTimeout(_ => FT.load_data("https://cdn.jsdelivr.net/gh/BenPortner/js_family_tree/data/data_simple.js"), 2000);
 		</script>
 		
-		</div>
-	
-   </div>
-	
+		
 	 <script>
       
     // Here the value is stored in new variable x 
     function myFunction() {
         var x = document.getElementById("searchItem").value;        
-		window.alert("Entered Name: " +x + " Search Implemenation yet to apply");
+		window.alert('Search Name: ' + x + '\n' + 'Search method not implemented yet.');
     }
     </script>
 	

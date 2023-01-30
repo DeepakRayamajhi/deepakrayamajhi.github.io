@@ -706,7 +706,7 @@ class FTDrawer {
                 <span style='margin-left: 2.5px;'><b>` + node.get_name() + `</b></span><br>
                 <table style="margin-top: 2.5px;">
 						<tr><img src = "` + temp_photo_link + `"></tr>
-                        <tr><td>born in</td><td>` + (node.get_birth_year() || "?") + ` at ` + (node.data.birthplace || "?") + `</td></tr>
+                        <tr><td>DOB:</td><td>` + (node.get_birth_year() || "?") + `</td> </tr> <tr><td> Birthplace: ` + (node.data.birthplace || "?") + `</td></tr>
                      
 						
 						
