@@ -113,11 +113,8 @@ body {
 	 max-width: 300px;
   }
   
-  .tooltip {
-	  
-	width:75px;  
-	  
-	  
+  .tooltip {	  
+	display:none; 
   }
   
   
