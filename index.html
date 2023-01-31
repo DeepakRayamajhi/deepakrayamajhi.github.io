@@ -29,26 +29,14 @@
     <link rel="stylesheet" href="css/main.css">	
 </head>
 
-<body>
-    	
+<body>   	
 		
-	<div id="block_container">
-	
-	
+	<div id="block_container">	
 		<div id="bloc2">		
 		<div class="header">Rayamajhi Family Tree</div>
-		</div>
+		</div>	
 	
-	
-		<div id="bloc1">
-		<!-- <form action="" > -->
-		  <!-- <input type="search"  name="search" placeholder="Search Name"> -->
-		  <!-- <button  type="submit" onclick="switchMainNode()" >	 -->
-			<!-- <span>Search</span>		   -->
-		  <!-- </button> -->
-		
-		<!-- </form> -->
-		
+		<div id="bloc1">		
 		<form action="" class="search-bar">
 		  <input type="search" id="searchItem" name="search" placeholder="Search Name">
 		  <button class="search-btn" type="submit" onclick="switchMainNode()" >			
@@ -63,72 +51,50 @@
 		
 	
 	</div>
-		
-	
-	
-	 <table style='width:99%;'>
-	 <!-- <tr>  -->
-		<!-- <td style='width:40%;'> -->
-		<!-- <form action="" class="search-bar"> -->
-		  <!-- <input type="search" id="searchItem" name="search" placeholder="Search Name"> -->
-		  <!-- <button class="search-btn" type="submit" onclick="switchMainNode()" > -->
-			<!-- <span >Search</span> -->
-		  <!-- </button> -->
-		<!-- </form> -->
-		
-		<!-- </td> -->
-		
-		<!-- <td class="header" style='width:50%;'> Rayamajhi Family Tree</td>	 -->
-		<!-- <!-- <td class="header" style='width:10%;'></td> --> -->
-	 
-	 <!-- </tr> -->
-	 
-	 <!-- </table> -->
-	 
-		
-		<script src="https://d3js.org/d3.v7.min.js"></script>
-		<script src="js/d3-dag.js"></script>
-		<script src="data/data_Sample.js"></script>
-		<script src="js/familytree.js"></script>
-		
-	
-		 <script>
-						
-			// insert svg object to hold the family tree
-			const svg = d3.select("body").append("svg")
-				.attr("width", document.body.offsetWidth)
-				.attr("height", document.documentElement.clientHeight);	
-			
-			var FT = new FamilyTree(data, svg);
-			
-			FT.draw();	
-					
-			var selectStartNode = localStorage.getItem("mainNodeKey");			
-			FT.load_data(selectStartNode);
-		
-			function switchMainNode(){				
-				var selectStartNode =document.getElementById("searchItem").value;
-				var flag=false;				
 				
-				for (var d in data.persons) {
-					if (data.persons[d].name.toLowerCase()===selectStartNode.toLowerCase()) {					
-					flag=true;
-					selectStartNode=d;
-					break;
-					}			
-				}
-				
-				if (flag==true) {
-					localStorage.setItem("mainNodeKey", selectStartNode);	
-				} else {
-					alert("Name not found! Try using first name only. For Daughter use input as name(Daughter)"); 
-					selectStartNode="HemantUnknUnkn";
-					localStorage.setItem("mainNodeKey", "HemantUnknUnkn");	
-				}
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<script src="js/d3-dag.js"></script>
+	<script src="data/data_Sample.js"></script>
+	<script src="js/familytree.js"></script>
+	
 
+	 <script>
+					
+		// insert svg object to hold the family tree
+		const svg = d3.select("body").append("svg")
+			.attr("width", document.body.offsetWidth)
+			.attr("height", document.documentElement.clientHeight);	
+		
+		var FT = new FamilyTree(data, svg);
+		
+		FT.draw();	
+				
+		var selectStartNode = localStorage.getItem("mainNodeKey");			
+		FT.load_data(selectStartNode);
+	
+		function switchMainNode(){				
+			var selectStartNode =document.getElementById("searchItem").value;
+			var flag=false;				
+			
+			for (var d in data.persons) {
+				if (data.persons[d].name.toLowerCase()===selectStartNode.toLowerCase()) {					
+				flag=true;
+				selectStartNode=d;
+				break;
+				}			
 			}
 			
-		</script>	
+			if (flag==true) {
+				localStorage.setItem("mainNodeKey", selectStartNode);	
+			} else {
+				alert("Name not found! Try using first name only. For Daughter use input as name(Daughter)"); 
+				selectStartNode="HemantUnknUnkn";
+				localStorage.setItem("mainNodeKey", "HemantUnknUnkn");	
+			}
+
+		}
+		
+	</script>	
 	
 
 	
