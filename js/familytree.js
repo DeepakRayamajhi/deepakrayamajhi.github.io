@@ -586,6 +586,7 @@ class Person extends FTNode {
 class FTDrawer {
 
     static label_delimiter = "_";
+	
 
     constructor(
         ft_datahandler,
@@ -706,7 +707,7 @@ class FTDrawer {
                 <span style='margin-left: 2.5px;' class="name"><b >` + node.get_name() + `</b></span><br>
                 <table style="margin-top: 2.5px;">
 						<tr><img src = "` + temp_photo_link + `"></tr>
-                        <tr><td>DOB:</td><td>` + (node.get_birth_year() || "?") + `</td> </tr> <tr><td> Birthplace: ` + (node.data.birthplace || "?") + `</td></tr>
+                        <tr><td><b>DOB:</b></td><td>` + (node.get_birth_year() || "?") + `</td> </tr> <tr><td> <b>Birthplace: ` + (node.data.birthplace || "?") + `</b></td></tr>
                      
 						
 						
@@ -973,28 +974,34 @@ class FamilyTree extends FTDrawer {
         const ft_datahandler = new FTDataHandler(data);
         super(ft_datahandler, svg);
     };
+	
+	 static node_tracking_to_update = "-";
 
     get root() {
         return this.ft_datahandler.root;
     }
 
-    wait_until_data_loaded(old_data, delay, tries, max_tries) {
-        if (tries == max_tries) {
-            return;
-        } else {
-            const new_data = window.data;
-            if (old_data == new_data) {
-                setTimeout(
-                    _ => this.wait_until_data_loaded(old_data, delay, ++tries, max_tries),
-                    delay,
-                )
-            } else {
-                this.draw_data(new_data);
-                return;
-            }
-        }
-    }
+    // wait_until_data_loaded(old_data, delay, tries, max_tries) {
+        // if (tries == max_tries) {
+            // return;
+        // } else {
+			
+            // const new_data = window.data;
+            // if (old_data == new_data) {
+                // setTimeout(
+                    // _ => this.wait_until_data_loaded(old_data, delay, ++tries, max_tries),
+                    // delay,
+                // )
+            // } else {
+				
+                // this.draw_data(new_data);
+                // return;
+            // }
+        // }
+    // }
 
+
+	
     draw_data(data) {
         var x0 = null,
             y0 = null;
@@ -1010,21 +1017,70 @@ class FamilyTree extends FTDrawer {
         this.draw();
     }
 
-    load_data(path_to_data) {
-        const old_data = data,
-            max_tries = 5,
-            delay = 1000,
-            file = document.createElement('script');
-        var tries = 0;
-        file.onreadystatechange = function() {
-            if (this.readyState == 'complete') {
-                this.wait_until_data_loaded(old_data, delay, tries, max_tries);
+    // load_data(path_to_data) {
+        // const old_data = data,
+            // max_tries = 5,
+            // delay = 1000,
+            // file = document.createElement('script');
+        // var tries = 0;
+        // file.onreadystatechange = function() {
+            // if (this.readyState == 'complete') {
+                // this.wait_until_data_loaded(old_data, delay, tries, max_tries);
+            // }
+        // }
+        // file.onload = this.wait_until_data_loaded(old_data, delay, tries, max_tries);
+        // file.type = "text/javascript";
+        // file.src = path_to_data;
+        // document.getElementsByTagName("head")[0].appendChild(file);
+		
+		// //window.alert("I am here");
+		// console.log("Hellow1");
+		
+		// console.log(document.getElementsByTagName("head")[0]);
+    // }
+	
+	
+	wait_until_data_loaded(old_data, delay, tries, max_tries,main_node_id) {
+        if (tries == max_tries) {
+            return;
+        } else {			
+            const new_data = window.data;	
+			
+            if (new_data.start!=main_node_id) {
+				//alert('old data are equal to new data' + 'old_data.start='+old_data.start + '  new_data.start=' +new_data.start);
+				
+                setTimeout(
+                    _ => this.wait_until_data_loaded(old_data, delay, ++tries, max_tries,main_node_id),
+                    delay,
+                )
+            } else {
+				//alert('i am inside data' + 'old_data.start='+old_data.start + '  new_data.start=' +new_data.start);
+                this.draw_data(new_data);
+                return;
             }
         }
-        file.onload = this.wait_until_data_loaded(old_data, delay, tries, max_tries);
-        file.type = "text/javascript";
-        file.src = path_to_data;
-        document.getElementsByTagName("head")[0].appendChild(file)
     }
+	
+	load_data(main_node_id) {						
+			const old_data = data,
+				max_tries = 5,
+				delay = 1000,
+				file = document.createElement('script');
+			var tries = 0;
+			
+			file.text='data.start="' + main_node_id +'"';
+			file.onreadystatechange = function() {
+				if (this.readyState == 'complete') {
+					this.wait_until_data_loaded(old_data, delay, tries, max_tries, main_node_id);
+				}
+			}
+			
+			file.onload = this.wait_until_data_loaded(old_data, delay, tries, max_tries,main_node_id);
+			
+			file.type = "text/javascript";
+			document.getElementsByTagName("head")[0].appendChild(file);      
+		
+		
+	}	
 
 };
