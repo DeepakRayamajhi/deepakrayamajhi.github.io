@@ -7,15 +7,43 @@ body {
 }
 
 .header {
-	font-size: 30px;
+	font: 2vw sans-serif;
 	font-weight: bold;
 	color: Yellow;
-	text-align: center;
+	text-align: Left;
 	
 	
 	
 }
+/* table,td {	 */
+	/* border: 1px solid #cccccc; */
+/* } */
 
+
+
+/* Clear floats after the columns */
+/* .row:after { */
+  /* content: ""; */
+  /* display: table; */
+  /* clear: both; */
+/* } */
+
+h2 {
+	font: 2vw sans-serif;
+	font-weight: bold;
+	color: magenta;
+	text-align :center;
+	background: none;
+	
+}
+
+p {
+	font: 14px sans-serif;
+	font-weight: bold;
+	color: yellow;
+	text-align :center;
+	background: none;
+}
 
 #fname {	
 	background-color : #d1d1d1; 
@@ -23,8 +51,9 @@ body {
 	
 }
 
+
 .person {
-    stroke: white;
+    stroke: black;
     stroke-width: 2px;
 }
 
@@ -51,14 +80,14 @@ body {
 
 .link {
     fill: none;
-    stroke: gray;
+    stroke: blue;
     stroke-width: 3px;
 }
 
 .tooltip {
     position: absolute;
 	/* offset-distance: 400px; */
-    font: 10px sans-serif;
+    font: 0.6vw sans-serif;
     padding: 12px;
     background: rgba(0, 0, 0, 0.8);
 	/* background:#6E3460; */
@@ -71,61 +100,20 @@ body {
 }
 
 .name {
-	font-size: 20px;
-	color: Yellow;
+	font: 0.8vw sans-serif;
+	 color: Yellow;
 }
 
 .description {
-	font-size: 12px;
 	color: Yellow;
 	text-align:left;
 }
 
 #block_container
 {
-    text-align:center;
+    text-align:left;
 }
 #bloc1, #bloc2
-{	
-	text-align:center;
-    display:inline;
+{
+    display:inline-block;
 }
-
-
-
-
-/* Media Controls */
-
-@media screen and (max-width: 700px) {
- .header {
-     font-size: 25px;
-  }
-  
- .name {
-	font-size: 16px;
-	}
-
-  .description {
-	font-size: 10px;
-}
-  
-  .search-bar {	  
-	 max-width: 300px;
-  }
-  
-  .tooltip {
-	  
-	width:75px;  
-	  
-	  
-  }
-  
-  
-  
-}
-
-
-
-
-
-

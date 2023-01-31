@@ -4,12 +4,11 @@
 }
 body, button, input {
   font: 1em Hind, sans-serif;
-  /* line-height: 1.0em; */
+  line-height: 1.0em;
 }
 
  .search-bar {
   display: flex;
-  font: 1em Hind, sans-serif;
 }
 
 .search-bar input,
@@ -38,9 +37,9 @@ body, button, input {
 }
 .search-bar {
   margin: auto;
-  padding: 0.2em;
+  padding: 1.5em;
   justify-content: center;
-  max-width: 350px;
+  max-width: 60em;
 }
 .search-bar input {
   background: transparent;

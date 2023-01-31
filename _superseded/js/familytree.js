@@ -841,7 +841,7 @@ class FTDrawer {
             const tooltip_div = this._tooltip_div,
                 tooltip_func = this._tooltip_func;
             nodeEnter
-                .on("", function (event, d) {
+                .on("mouseover", function (event, d) {
                     tooltip_div.transition()
                         .duration(1000)
                         .style("opacity", 1);
@@ -1087,3 +1087,4 @@ class FamilyTree extends FTDrawer {
 	}	
 
 };
+
