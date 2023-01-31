@@ -705,11 +705,14 @@ class FTDrawer {
 		}
         var content = `
                 <span style='margin-left: 2.5px;' class="name"><b >` + node.get_name() + `</b></span><br>
-                <table style="margin-top: 2.5px;">
+                <table style="margin-top: 2.5px;" class="description">
 						<tr><img src = "` + temp_photo_link + `"></tr>
-                        <tr><td><b>DOB:</b></td><td>` + (node.get_birth_year() || "?") + `</td> </tr> <tr><td> <b>Birthplace: ` + (node.data.birthplace || "?") + `</b></td></tr>
-                     
-						
+                        <tr><td><b>DOB: </b>
+							` + (node.get_birth_year() || "?") + `</td>
+						</tr> 							
+						<tr>							
+							<td> <b>Birthplace: ` + (node.data.birthplace || "?") + `</td>
+						</tr>
 						
                 </table>
                 `

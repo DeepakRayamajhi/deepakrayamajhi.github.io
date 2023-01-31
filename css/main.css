@@ -7,10 +7,10 @@ body {
 }
 
 .header {
-	font: 24px sans-serif;
+	font: 2vw sans-serif;
 	font-weight: bold;
 	color: Yellow;
-	text-align: center;
+	text-align: Left;
 	
 	
 	
@@ -29,7 +29,7 @@ body {
 /* } */
 
 h2 {
-	font: 18px sans-serif;
+	font: 2vw sans-serif;
 	font-weight: bold;
 	color: magenta;
 	text-align :center;
@@ -87,7 +87,7 @@ p {
 .tooltip {
     position: absolute;
 	/* offset-distance: 400px; */
-    font: 16px sans-serif;
+    font: 0.6vw sans-serif;
     padding: 12px;
     background: rgba(0, 0, 0, 0.8);
 	/* background:#6E3460; */
@@ -100,6 +100,12 @@ p {
 }
 
 .name {
-	font: 20px sans-serif;
+	font: 0.8vw sans-serif;
 	 color: Yellow;
 }
+
+.description {
+	color: Yellow;
+	text-align:left;
+}
+
