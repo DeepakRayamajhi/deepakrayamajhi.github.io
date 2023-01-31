@@ -39,7 +39,7 @@ body, button, input {
   margin: auto;
   padding: 1.5em;
   justify-content: center;
-  max-width: 35em;
+  max-width: 60em;
 }
 .search-bar input {
   background: transparent;
