@@ -143,19 +143,19 @@
 	// data loading starts from here
 
 	d3.json("flare.json", function(error,values){
-		root = values;
+		<!-- root = values; -->
 		select2_data = extract_select2_data(values,[],0)[1];//I know, not the prettiest...
-		root.x0 = height / 2;
-		root.y0 = 0;
-		root.children.forEach(collapse);
-		update(root);
+		<!-- root.x0 = height / 2; -->
+		<!-- root.y0 = 0; -->
+		<!-- root.children.forEach(collapse); -->
+		<!-- update(root); -->
 		//init search box
 		$("#search").select2({
 			data: select2_data,
 			containerCssClass: "search"
 		});
 	});
-	<!-- //attach search box listener -->
+	//attach search box listener
 	<!-- $("#search").on("select2-selecting", function(e) { -->
 		<!-- var paths = searchTree(root,e.object.text,[]); -->
 		<!-- if(typeof(paths) !== "undefined"){ -->
@@ -168,7 +168,7 @@
 
 	<!-- d3.select(self.frameElement).style("height", "800px"); -->
 
-	<!-- <!-- function update(source) { --> -->
+	<!-- function update(source) { -->
 		<!-- <!-- // Compute the new tree layout. --> -->
 		<!-- <!-- var nodes = tree.nodes(root).reverse(), --> -->
 		<!-- <!-- links = tree.links(nodes); --> -->
