@@ -132,6 +132,11 @@
 			containerCssClass: "peopledata"
 		});
 		
+		$("#peopledata").select2({
+			placeholder: "Search a Name",
+			allowClear: true
+		});
+		
 		$("#peopledata").on("select2-selecting", function(e) {
 		<!-- var paths = searchTree(root,e.object.text,[]); -->
 		<!-- if(typeof(paths) !== "undefined"){ -->
