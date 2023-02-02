@@ -104,7 +104,7 @@ body {
 	display:none; 
   }
   
-  #dropdown_menu {
+  .dropdown_menu {
 	
 	width: 300px;
 	
@@ -114,7 +114,7 @@ body {
   
 }
 
-#dropdown_menu {
+.dropdown_menu {
 	
 	width: 350px;
 	height: 30px;
