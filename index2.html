@@ -101,68 +101,30 @@
 			}
 
 		}
-		
-		const countriesData = {
-				  "results": [
-					{
-					  "id": 1,
-					  "text": "Jyoti"
-					},
-					{
-					  "id": 2,
-					  "text": "Dezyan"
-					},
-					{
-					  "id": 3,
-					  "text": "Ishaan"
-					},
-					{
-					  "id": 4,
-					  "text": "Peter"
-					},
-					{
-					  "id": 5,
-					  "text": "Deepak"
-					}
-				  ]
-				};
-		
-		
-		
-		
-		function getData(data,leaves) {		
+				
+		function getNames(data,leaves, index) {		
 			for (var d in data.persons)  {
 			var name=data.persons[d].name;	 
 				if (!name.toLowerCase().includes("wife")) {
-					//console.log(name);
-					
-				}
-				
-			}
-			leaves.push({id: 1,text:"Deepak"});
-			leaves.push({id: 2,text:"Jyoti"});
+					leaves.push({id: ++index,text:name});
+				}			
+			}		
 			return leaves;
-
-}
-		var people=getData(data,[]);
+		}
+		
+		var peopleNames=getNames(data,[]);
 	
 	
 		$("#peopledata").select2({
-			data: people,
+			data: peopleNames,
 			containerCssClass: "peopledata"
 		});
-		
-	
+			
 		
 		$("#peopledata").on("select2-selecting", function(e) {	
-		alert(e.object.text);
+		alert(e.object.id + " -->" + e.object.text);
 		});
-		
-	
-	
-	
-	
-	
+			
 	
 	</script>	
 	
