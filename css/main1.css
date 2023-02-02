@@ -114,10 +114,11 @@ body {
   
 }
 
-.dropdown_menu {
+#dropdown_menu {
 	
 	width: 350px;
 	height: 40px;
+	padding: 0.2em;
 	
 }
 
