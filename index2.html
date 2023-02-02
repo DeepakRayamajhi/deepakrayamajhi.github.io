@@ -54,7 +54,7 @@
 	
 		</div>
 		
-		<div id="peopledata" class="dropdown_menu">	</div>	
+		<div id="peopledata" class="dropdown_menu" placeholder="Search a Name">	</div>	
 
 		
 	
@@ -132,53 +132,11 @@
 				  ]
 				};
 		
-		$("#peopledata").select2({
-			data: countriesData,
-			containerCssClass: "peopledata"
-		});
-
-		
 		$("#peopledata").on("select2-selecting", function(e) {
-		<!-- var paths = searchTree(root,e.object.text,[]); -->
-		<!-- if(typeof(paths) !== "undefined"){ -->
-			<!-- openPaths(paths); -->
-		<!-- } -->
-		<!-- else{ -->
-			<!-- alert(e.object.text+" not found!"); -->
-		<!-- } -->
-		//alert("yes I am trying selecting");
 		alert(e.object.text);
-		
-		
 		});
 		
-		
-		//$('#mySelect2').find(':selected');
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		<!-- for (let key in countriesData) { -->
-		  <!-- let option = document.createElement("option"); -->
-		  <!-- option.setAttribute('value', data[key]); -->
-
-		  <!-- let optionText = document.createTextNode(key); -->
-		  <!-- option.appendChild(optionText); -->
-
-		  <!-- countriesDropDown.appendChild(option); -->
-		<!-- } -->
-				
-				
-		
+	
 		
 	</script>	
 	
