@@ -124,7 +124,7 @@
 		$("#peopledata").on("select2-selecting", function(e) {	
 			alert(e.object.id + " -->" + e.object.text);		
 			localStorage.setItem("mainNodeKey", e.object.id);		
-		
+			location.reload();
 		});
 			
 	
