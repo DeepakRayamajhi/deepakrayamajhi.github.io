@@ -54,7 +54,7 @@
 	
 		</div>
 		
-		<div id="peopledata js-states form-control" class="dropdown_menu">	</div>	
+		<div id="peopledata" class="dropdown_menu">	</div>	
 
 		
 	
@@ -135,16 +135,16 @@
 		  <!-- } -->
 		<!-- }); -->
 		
-		$("#peopledata").select2({
-			placeholder: "Select a state",
-			allowClear: true
-		});
-		
-		
 		<!-- $("#peopledata").select2({ -->
-			<!-- data: countriesData, -->
-			<!-- containerCssClass: "peopledata" -->
+			<!-- placeholder: "Select a state", -->
+			<!-- allowClear: true -->
 		<!-- }); -->
+		
+		
+		$("#peopledata").select2({
+			data: countriesData,
+			containerCssClass: "peopledata"
+		});
 		
 		<!-- $("#peopledata").select2({ -->
 			<!-- placeholder: "Search a Name", -->
