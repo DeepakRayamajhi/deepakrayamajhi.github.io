@@ -146,6 +146,10 @@
 			containerCssClass: "peopledata"
 		});
 		
+		var newOption = new Option("hello", -1, false, false);
+			$('#peopledata').append(newOption).trigger('change');
+		
+		
 		<!-- $("#peopledata").select2({ -->
 			<!-- placeholder: "Search a Name", -->
 			<!-- allowClear: true -->
