@@ -104,12 +104,23 @@ body {
 	display:none; 
   }
   
+  .peopledata {	
+	width: 250px;	 
+}
+
   
   
 }
 
+.peopledata {
+	top: 10px;
+	width: 300px;	 
+}
 
-
-
-
+.select2-container .select2-choice, .select2-result-label {
+  font-size: 1.5em;
+  height: 30px; 
+  /* overflow: auto; */
+  color:blue;
+}
 

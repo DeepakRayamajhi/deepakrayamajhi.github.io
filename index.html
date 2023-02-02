@@ -24,7 +24,10 @@
 	<meta name="keywords" content="Rayamajhi, Family Tree, Genealogy, Nepal, Kathmandu, Gulmi, USA Nepali Family, USA Rayamajhi Family, Nepali">
 	<meta name="author" content="Deepak Rayamajhi">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rayamajhi Family Genealogy</title>
+	<title>Rayamajhi Family Genealogy</title>	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.css"></link>	
 	<link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/main.css">	
 </head>
@@ -32,25 +35,16 @@
 <body>   	
 		
 	<div id="block_container">	
-		<div id="bloc2">		
+		<div id="bloc1">		
 		<div class="header">Rayamajhi Family Tree</div>
 		</div>	
-	
-		<div id="bloc1">		
-		<form action="" class="search-bar">
-		  <input type="search" id="searchItem" name="search" placeholder="Search Name">
-		  <button class="search-btn" type="submit" onclick="switchMainNode()" >			
-		   <span>Search</span>
-		  </button>
-		 
-		</form>
-		
-	
-		</div>
+		<div id="peopledata"  placeholder="Search Person">	</div>
 		
 		
-	
+		
 	</div>
+	
+	
 				
 	<script src="https://d3js.org/d3.v7.min.js"></script>
 	<script src="js/d3-dag.js"></script>
@@ -59,43 +53,50 @@
 	
 
 	 <script>
-					
+	 
+	    //function to formate people data
+		
+		function getNames(data,leaves) {		
+			for (var d in data.persons)  {
+			var name=data.persons[d].name;	 
+				if (!name.toLowerCase().includes("wife")) {
+					leaves.push({id: d,text:name});
+				}			
+			}		
+			return leaves;
+		}
+		
+		// put data in select2 container
+		var peopleNames=getNames(data,[]);	
+	
+		$("#peopledata").select2({
+			data: peopleNames,
+			containerCssClass: "peopledata"
+		});			
+
+				
 		// insert svg object to hold the family tree
 		const svg = d3.select("body").append("svg")
 			.attr("width", document.body.offsetWidth)
 			.attr("height", document.documentElement.clientHeight);	
 		
-		var FT = new FamilyTree(data, svg);
-		
+		var FT = new FamilyTree(data, svg);		
 		FT.draw();	
-				
-		var selectStartNode = localStorage.getItem("mainNodeKey");			
-		FT.load_data(selectStartNode);
-	
-		function switchMainNode(){				
-			var selectStartNode =document.getElementById("searchItem").value;
-			var flag=false;				
-			
-			for (var d in data.persons) {
-				if (data.persons[d].name.toLowerCase()===selectStartNode.toLowerCase()) {					
-				flag=true;
-				selectStartNode=d;
-				break;
-				}			
-			}
-			
-			if (flag==true) {
-				localStorage.setItem("mainNodeKey", selectStartNode);	
-			} else {
-				alert("Name not found! Try using first name only. For Daughter use input as name(Daughter)"); 
-				selectStartNode="HemantUnknUnkn";
-				localStorage.setItem("mainNodeKey", "HemantUnknUnkn");	
-			}
-
-		}
 		
+		// global variable to track the start node
+		var selectStartNode = localStorage.getItem("mainNodeKey");			
+		FT.load_data(selectStartNode);	
+		
+		// interactive searching
+		$("#peopledata").on("select2-selecting", function(e) {						
+			localStorage.setItem("mainNodeKey", e.object.id);		
+			location.reload(); // reload the page after detecting node
+		});
+	
+	//	$("#peopledata").select2({select2-search:"red" });
+	
 	</script>	
 	
-
+	
 	
 </body>
