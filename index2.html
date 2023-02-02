@@ -127,10 +127,15 @@
 				  ]
 				};
 		
-		$("#peopledata").select2({
-			data: ,
-			containerCssClass: "peopledata"
+	
+		$("#peopledat").select2({
+		  placeholder: {
+			id: '-1', // the value of the option
+			text: 'Search a Name'
+		  }
 		});
+		
+		
 		$("#peopledata").select2({
 			data: countriesData,
 			containerCssClass: "peopledata"
