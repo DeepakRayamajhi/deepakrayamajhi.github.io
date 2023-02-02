@@ -37,9 +37,14 @@
 	<div id="block_container">	
 		<div id="bloc1">		
 		<div class="header">Rayamajhi Family Tree</div>
-		</div>			
-		<div id="peopledata" class="dropdown_menu " placeholder="Search Person">	</div>
+		</div>	
+		<div id="peopledata"  placeholder="Search Person">	</div>
+		
+		
+		
 	</div>
+	
+	
 				
 	<script src="https://d3js.org/d3.v7.min.js"></script>
 	<script src="js/d3-dag.js"></script>
@@ -87,7 +92,8 @@
 			localStorage.setItem("mainNodeKey", e.object.id);		
 			location.reload(); // reload the page after detecting node
 		});
-			
+	
+	//	$("#peopledata").select2({select2-search:"red" });
 	
 	</script>	
 	
