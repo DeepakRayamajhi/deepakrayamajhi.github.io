@@ -25,8 +25,14 @@
 	<meta name="author" content="Deepak Rayamajhi">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Rayamajhi Family Genealogy</title>
+
+	
+	<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.js"></script> -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.css"></link> -->
+	
 	<link rel="stylesheet" href="css/search.css">
-    <link rel="stylesheet" href="css/main.css">	
+    <link rel="stylesheet" href="css/main1.css">	
 </head>
 
 <body>   	
@@ -48,6 +54,11 @@
 	
 		</div>
 		
+		<div><select id="countriesDropDown" class="dropdown_menu">
+			</select>
+		</div>	
+		
+		<button onclick="dosomething()"> Check option </button>
 		
 	
 	</div>
@@ -94,8 +105,35 @@
 
 		}
 		
+		const countriesDropDown = document.getElementById("countriesDropDown");
+		
+		const countriesData = {
+		  "Australia": "🇦🇺",
+		  "Canada": "🇨🇦",
+		  "UK": "🇬🇧",
+		  "USA": "🇺🇸",
+		   "Nepal": "🇺🇸1",
+		    "Netherland": "🇺🇸2",
+			 "Nemar": "🇺🇸3",
+			 
+		}
+		
+		
+		for (let key in countriesData) {
+		  let option = document.createElement("option");
+		  option.setAttribute('value', data[key]);
+
+		  let optionText = document.createTextNode(key);
+		  option.appendChild(optionText);
+
+		  countriesDropDown.appendChild(option);
+		}
+				
+				
+		
+		
 	</script>	
 	
-
+	
 	
 </body>
