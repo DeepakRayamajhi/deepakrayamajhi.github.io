@@ -1,0 +1,111 @@
+
+<head>
+<script src="../data/data_Sample.js"></script>
+</head>
+
+<body>
+
+<script>
+
+var array = [{    
+    "EmployeeName": "John",    
+    "Experience": "12",    
+    "Technology": "SharePoint"    
+}, {    
+    "EmployeeName": "Charles",    
+    "Experience": "9",    
+    "Technology": "ASP.NET"    
+}, {    
+    "EmployeeName": "Jo",    
+    "Experience": "3",    
+    "Technology": "JAVA"    
+}, {    
+    "EmployeeName": "Daine",    
+    "Experience": "7",    
+    "Technology": "Sql Server"    
+}, {    
+    "EmployeeName": "Zain",    
+    "Experience": "6",    
+    "Technology": "C#"    
+}];    
+
+var countriesData = [{
+				  "results": [
+					{
+					  "id": 1,
+					  "text": "Jyoti"
+					},
+					{
+					  "id": 2,
+					  "text": "Dezyan"
+					},
+					{
+					  "id": 3,
+					  "text": "Ishaan"
+					},
+					{
+					  "id": 4,
+					  "text": "Peter"
+					},
+					{
+					  "id": 5,
+					  "text": "Deepak"
+					}
+				  ] }];
+
+
+
+
+//Comparer Function    
+function GetSortOrder(prop) {    
+    return function(a, b) {    
+        if (a[prop] > b[prop]) {    
+            return 1;    
+        } else if (a[prop] < b[prop]) {    
+            return -1;    
+        }    
+        return 0;    
+    }    
+}    
+
+
+ 
+
+function getData(data,leaves) {
+	
+	for (var d in data.persons)  {
+	var name=data.persons[d].name;	 
+		if (!name.toLowerCase().includes("wife")) {
+			//console.log(name);
+			
+		}
+		
+	}
+	leaves.push({id: 1,text:"Deepak"});
+	leaves.push({id: 2,text:"Jyoti"});
+	return leaves;
+
+}
+    
+array.sort(GetSortOrder("EmployeeName")); //Pass the attribute to be sorted on 
+countriesData[0].results.sort(GetSortOrder("text")); //Pass the attribute to be sorted on   
+
+console.log(countriesData[0]);
+<!-- console.log(data); -->
+var people=getData(data,[]);
+console.log(people);
+
+<!-- document.write("Sorted Employee Names : ");     -->
+<!-- for (var item in array) {     -->
+    <!-- document.write("<br>" + array[item].EmployeeName);     -->
+<!-- }     -->
+    
+<!-- array.sort(GetSortOrder("Technology")); //Pass the attribute to be sorted on     -->
+<!-- document.write("<br><br> Sorted Technology Names : ");     -->
+<!-- for (var item in array) {     -->
+    <!-- document.write("<br>" + array[item].Technology);     -->
+<!-- }    -->
+
+
+</script>
+</body>

@@ -54,7 +54,7 @@
 	
 		</div>
 		
-		<div id="peopledata" class="dropdown_menu" placeholder="Search name">	</div>	
+		<div id="peopledata" class="dropdown_menu" placeholder="Search Person">	</div>	
 
 		
 	
@@ -128,8 +128,27 @@
 				};
 		
 		
+		
+		
+		function getData(data,leaves) {		
+			for (var d in data.persons)  {
+			var name=data.persons[d].name;	 
+				if (!name.toLowerCase().includes("wife")) {
+					//console.log(name);
+					
+				}
+				
+			}
+			leaves.push({id: 1,text:"Deepak"});
+			leaves.push({id: 2,text:"Jyoti"});
+			return leaves;
+
+}
+		var people=getData(data,[]);
+	
+	
 		$("#peopledata").select2({
-			data: countriesData,
+			data: people,
 			containerCssClass: "peopledata"
 		});
 		
@@ -139,6 +158,11 @@
 		alert(e.object.text);
 		});
 		
+	
+	
+	
+	
+	
 	
 	</script>	
 	
