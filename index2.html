@@ -102,11 +102,11 @@
 
 		}
 				
-		function getNames(data,leaves, index) {		
+		function getNames(data,leaves) {		
 			for (var d in data.persons)  {
 			var name=data.persons[d].name;	 
 				if (!name.toLowerCase().includes("wife")) {
-					leaves.push({id: ++index,text:name});
+					leaves.push({id: d,text:name});
 				}			
 			}		
 			return leaves;
