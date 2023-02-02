@@ -103,15 +103,20 @@
 		}
 		
 		const countriesData = {
-		  "Australia": "🇦🇺",
-		  "Canada": "🇨🇦",
-		  "UK": "🇬🇧",
-		  "USA": "🇺🇸",
-		   "Nepal": "🇺🇸1",
-		    "Netherland": "🇺🇸2",
-			 "Nemar": "🇺🇸3",
-			 
-		}
+				  "results": [
+					{
+					  "id": 1,
+					  "text": "Option 1"
+					},
+					{
+					  "id": 2,
+					  "text": "Option 2"
+					}
+				  ],
+				  "pagination": {
+					"more": true
+				  }
+				};
 		
 		$("#peopledata").select2({
 			data: countriesData,
