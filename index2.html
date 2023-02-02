@@ -132,6 +132,22 @@
 			containerCssClass: "peopledata"
 		});
 		
+		$("#search").on("select2-selecting", function(e) {
+		<!-- var paths = searchTree(root,e.object.text,[]); -->
+		<!-- if(typeof(paths) !== "undefined"){ -->
+			<!-- openPaths(paths); -->
+		<!-- } -->
+		<!-- else{ -->
+			<!-- alert(e.object.text+" not found!"); -->
+		<!-- } -->
+		alert(e.object.text);
+		
+	});
+		
+		
+		//$('#mySelect2').find(':selected');
+		
+		
 		
 		
 		
