@@ -54,7 +54,7 @@
 	
 		</div>
 		
-		<div id="peopledata" class="dropdown_menu" placeholder="Search a Name">	</div>	
+		<div id="peopledata" class="dropdown_menu" placeholder="Search name">	</div>	
 
 		
 	
@@ -105,11 +105,6 @@
 		const countriesData = {
 				  "results": [
 					{
-					  "id": -1,
-					  "text": "Search a Name"
-					},
-				  
-					{
 					  "id": 1,
 					  "text": "Option 1"
 					},
@@ -132,12 +127,19 @@
 				  ]
 				};
 		
-		$("#peopledata").on("select2-selecting", function(e) {
-		alert(e.object.text);
+		
+		$("#peopledata").select2({
+			data: countriesData,
+			containerCssClass: "peopledata"
 		});
 		
 	
 		
+		$("#peopledata").on("select2-selecting", function(e) {	
+		alert(e.object.text);
+		});
+		
+	
 	</script>	
 	
 	
