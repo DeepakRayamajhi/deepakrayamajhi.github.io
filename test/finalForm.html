@@ -10,7 +10,6 @@
 
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.css"></link>
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
@@ -21,14 +20,16 @@
 
 <!-- This will be attached to select2, only static element on the page -->
 <div>
-<label> First Person </label><div id="search"></div>
-<br><br>
-<label> Second Person </label><div id="search1"></div>
+<label> Search Person </label><div id="search"></div>
 </div>
 <br>
 <button type="button" onclick="refreshPage()">Reset Graph</button>
 <input  type="checkbox" id ="checkBoxExpandAll" onclick="expandTree()"><label> Expand All </label>
 <!-- <button type="button" onclick="refreshPage()">Reset Graph</button> -->
 
+
+
+<script src="data_SampleSimple.js"></script>
+<script src="drawFamilyTree.js"></script>
 </body>
 </html>

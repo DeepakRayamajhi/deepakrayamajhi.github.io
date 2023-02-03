@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<head>
 <meta charset="utf-8">
 
 <style>
@@ -29,17 +30,69 @@
 	.search {
 	  width: 100%;
 	}
+
+	.search1 {
+	  width: 100%;
+	}
 </style>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.css"></link>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+<link rel="stylesheet" href="main.css">	
+</head>
 <!-- This will be attached to select2, only static element on the page -->
+<body>
 <div id="search"></div>
+<div>
+	<label> First Person </label><div id="search"></div>
+	<br />
+	<label> Second Person </label><div id="search1"></div>
+</div>
+<br />
+<button type="button" onclick="refreshPage()">Reset Graph</button>
+<input  type="checkbox" id ="checkBoxExpandAll" onclick="expandTree()"><label> Expand All </label>
+
+<br>
+<div id="anchorBox" style="position:relative; width:100%; background:blue; left:400px">
+
+</div>
+
+<script src="data_SampleSimple.js"></script>
 
 <!-- Main -->
 <script type="text/javascript">
+
+		// *********** Convert flat data into a nice tree ***************
+	// create a name: node map
+	var dataMap = data.reduce(function(map, node) {
+		map[node.id] = node;
+		return map;
+	}, {});
+
+	var treeData = [];
+	data.forEach(function(node) {
+	// add to parent
+	var parent = dataMap[node.parent];
+	if (parent) {
+		// create child array if it doesn't exist
+		(parent.children || (parent.children = []))
+			// add node to child array
+			.push(node);
+	} else {
+		// parent is null or missing
+		treeData.push(node);
+	}
+	});
+
+
+	 var zoom = d3.behavior.zoom() 
+   		.scaleExtent([1, 5])
+    	.on("zoom", zoomed); 
+	
+
+
 
 	//basically a way to get the path to an object
 	function searchTree(obj,search,path){
@@ -82,7 +135,7 @@
 		.attr("class", "tooltip")
 		.style("opacity", 0);
 
-	var margin = {top: 20, right: 120, bottom: 20, left: 120},
+	var margin = {top: 10, right: 0, bottom: 10, left: 0},
 		width = 960 - margin.right - margin.left,
 		height = 800 - margin.top - margin.bottom;
 
@@ -95,15 +148,31 @@
 
 	var tree = d3.layout.tree()
 		.size([height, width]);
+		// .nodeSize([30, 30]);
 
 	var diagonal = d3.svg.diagonal()
 		.projection(function(d) { return [d.y, d.x]; });
 
-	var svg = d3.select("body").append("svg")
+	 var xx= d3.select("#anchorBox");
+	 console.log(xx);
+
+	var svg = d3.select("#anchorBox").append("svg")
 		.attr("width", width + margin.right + margin.left)
 		.attr("height", height + margin.top + margin.bottom)
 	  	.append("g")
-		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+		.call(zoom);
+
+
+	var rect = svg.append("rect")
+    .attr("width", 10000)
+    .attr("height", 10000)
+	.attr("x", -5000)
+	.attr("y",-5000)
+    .style("fill", "red")
+    .style("pointer-events", "all");
+	
+	
 
 	//recursively collapse children
 	function collapse(d) {
@@ -140,19 +209,21 @@
 		}
 	}
 
-	d3.json("https://deepakrayamajhi.github.io/test/flare.json", function(error,values){
-		root = values;
-		select2_data = extract_select2_data(values,[],0)[1];//I know, not the prettiest...
-		root.x0 = height / 2;
-		root.y0 = 0;
-		root.children.forEach(collapse);
-		update(root);
-		//init search box
-		$("#search").select2({
-			data: select2_data,
-			containerCssClass: "search"
-		});
+
+	root = treeData[0];
+	select2_data = extract_select2_data(treeData[0],[],0)[1];//I know, not the prettiest...
+	root.y0 = 0;
+	root.x0 = height / 2;
+	root.children.forEach(collapse);
+	update(root);
+
+	//init search box
+	$("#search").select2({
+		data: select2_data,
+		containerCssClass: "search"
 	});
+
+
 	//attach search box listener
 	$("#search").on("select2-selecting", function(e) {
 		var paths = searchTree(root,e.object.text,[]);
@@ -172,7 +243,20 @@
 		links = tree.links(nodes);
 
 		// Normalize for fixed-depth.
-		nodes.forEach(function(d) { d.y = d.depth * 180; });
+		nodes.forEach(function(d) { d.y = d.depth * 180;});
+
+		var x = d3.scale.sqrt().range([0, 100]);
+		nodes.forEach(function(d) { d.x = x(d.x); });
+
+		var rootNodeX0=root.x;
+		console.log(rootNodeX0);
+		nodes.forEach(function(d) { 
+						d.x = d.x-rootNodeX0+400;
+						d.y = d.y+100;						
+					});
+		console.log(root.x0);
+
+		// nodes.forEach(function(d) { d.x = d.depth * 25; });
 
 		// Update the nodesâ€¦
 		var node = svg.selectAll("g.node")
@@ -270,6 +354,49 @@
 			d.x0 = d.x;
 			d.y0 = d.y;
 		  });
+		  
 	}
+
+	 function zoomed() {
+		svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); 
+	 } 
+
+
+	 function expand(d){   
+    if (d._children) {        
+        d.children = d._children;
+        d._children = null;       
+    }
+		var children = (d.children)?d.children:d._children;
+		if(children)
+		  children.forEach(expand);
+	}
+    
+	function expandAll(){
+		expand(root); 
+		update(root);
+	}
+    
+	function collapseAll(){
+		root.children.forEach(collapse);
+		collapse(root);
+		update(root);
+	}
+	
+	
+	function expandTree() {
+		if (document.getElementById('checkBoxExpandAll').checked) {
+			expandAll();			
+		} else {
+		collapseAll();
+		}
+	}
+
+	function refreshPage() {
+	location.reload();
+	}
+	
 </script>
+
+</body>
 </html>
