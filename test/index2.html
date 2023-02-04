@@ -39,7 +39,13 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script> -->
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script> -->
+
+
 <link rel="stylesheet" href="main.css">	
 </head>
 <!-- This will be attached to select2, only static element on the page -->
@@ -63,6 +69,7 @@
 
 <!-- Main -->
 <script type="text/javascript">
+	console.log(d3.version);
 
 		// *********** Convert flat data into a nice tree ***************
 	// create a name: node map
@@ -87,11 +94,12 @@
 	});
 
 
-	 var zoom = d3.behavior.zoom() 
-   		.scaleExtent([1, 5])
-    	.on("zoom", zoomed); 
+	 <!-- var zoom = d3.behavior.zoom()  -->
+   		<!-- .scaleExtent([0.2, 5]) -->
+    	<!-- .on("zoom", zoomed);  -->
 	
-
+	//zoom = d3.zoom().on("zoom", event => svg.g.attr("transform", event.transform));
+     
 
 
 	//basically a way to get the path to an object
@@ -129,15 +137,18 @@
 	        }
 	        return [index,leaves];
 	}
-
-	var div = d3.select("body")
-		.append("div") // declare the tooltip div
-		.attr("class", "tooltip")
-		.style("opacity", 0);
-
+	
 	var margin = {top: 10, right: 0, bottom: 10, left: 0},
-		width = 960 - margin.right - margin.left,
-		height = 800 - margin.top - margin.bottom;
+	width = 960 - margin.right - margin.left,
+	height = 800 - margin.top - margin.bottom;
+
+	
+	
+	// start from here-->
+	
+	var tree = d3.tree()
+		.size([height, width]);
+		
 
 	var i = 0,
 		duration = 750,
@@ -146,22 +157,37 @@
 
 	var diameter = 960;
 
-	var tree = d3.layout.tree()
-		.size([height, width]);
+	<!-- var tree = d3.layout.tree() -->
+		<!-- .size([height, width]); -->
+		
+		
+		
+		
 		// .nodeSize([30, 30]);
 
-	var diagonal = d3.svg.diagonal()
-		.projection(function(d) { return [d.y, d.x]; });
+	<!-- var diagonal = d3.svg.diagonal() -->
+		<!-- .projection(function(d) { return [d.y, d.x]; }); -->
+		
+		
+	<!-- var diagonal = function link(d) { -->
+  <!-- return "M" + d.source.y + "," + d.source.x -->
+      <!-- + "C" + (d.source.y + d.target.y) / 2 + "," + d.source.x -->
+      <!-- + " " + (d.source.y + d.target.y) / 2 + "," + d.target.x -->
+      <!-- + " " + d.target.y + "," + d.target.x; -->
+<!-- };	 -->
+		
+		
+		
+		
 
-	 var xx= d3.select("#anchorBox");
-	 console.log(xx);
 
 	var svg = d3.select("#anchorBox").append("svg")
 		.attr("width", width + margin.right + margin.left)
 		.attr("height", height + margin.top + margin.bottom)
 	  	.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-		.call(zoom);
+		.call(zoom)
+		.append("g");
 
 
 	var rect = svg.append("rect")
@@ -235,7 +261,7 @@
 		}
 	})
 
-	d3.select(self.frameElement).style("height", "800px");
+	//d3.select(self.frameElement).style("height", "10px");
 
 	function update(source) {
 		// Compute the new tree layout.
@@ -245,8 +271,8 @@
 		// Normalize for fixed-depth.
 		nodes.forEach(function(d) { d.y = d.depth * 180;});
 
-		var x = d3.scale.sqrt().range([0, 100]);
-		nodes.forEach(function(d) { d.x = x(d.x); });
+		<!-- var x = d3.scale.sqrt().range([0, 100]); -->
+		<!-- nodes.forEach(function(d) { d.x = x(d.x); }); -->
 
 		var rootNodeX0=root.x;
 		console.log(rootNodeX0);
