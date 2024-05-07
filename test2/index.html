@@ -64,7 +64,7 @@
             offset.y = event.touches[0].clientY - figure.getBoundingClientRect().top;
         }
         document.addEventListener('mousemove', drag);
-        document.addEventListener('touchmove', drag);
+        document.addEventListener('touchmove', drag, {passive:false});
         document.addEventListener('mouseup', stopDragging);
         document.addEventListener('touchend', stopDragging);
     }
