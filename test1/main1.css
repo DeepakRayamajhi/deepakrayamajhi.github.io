@@ -50,8 +50,9 @@ button {
 #familyTreeLocataion1 {
 	position:relative; 
 	width:100%; 
-	height:650px;
+	height:400px;
 	background:blue;
+	overflow: hidden;
 }
 
 #checkBoxExpandAll {
