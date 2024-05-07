@@ -1,81 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scrollable Inner Div</title>
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden; /* prevent page scrolling */
-  }
-  #outer {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-  #inner {
-    width: 200%;
-    height: 200%;
-    background-color: lightblue;
-    position: absolute;
-    top: 0;
-    left: 0;
-    touch-action: pan-y; /* allow vertical scroll only */
-  }
-  #figure {
-    width: 50px;
-    height: 50px;
-    background-color: red;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollable Inner Div</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .outer {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+			background-color: blue;
+        }
+        .inner {
+            width: 100%;
+            height: 500px; /* Set the height of the scrollable area */
+            overflow-y: scroll; /* Allow vertical scrolling */
+            -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .figure {
+            width: 400px;
+            height: 500px;
+            background-color: red;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            transform: translate(0%, 0%);
+        }
+    </style>
 </head>
 <body>
-<div id="outer">
-  <div id="inner">
-    <div id="figure"></div>
-  </div>
+
+<div class="outer">
+    <div class="inner">
+        <div class="figure"></div>
+    </div>
 </div>
 
 <script>
-  // Get the inner div
-  var innerDiv = document.getElementById('inner');
-  // Initialize variables for touch event
-  var initialX = null;
-  var initialY = null;
-  var currentX = 0;
-  var currentY = 0;
-  // Add touch event listeners
-  innerDiv.addEventListener('touchstart', function(e) {
-    initialX = e.touches[0].clientX;
-    initialY = e.touches[0].clientY;
-  });
+    // JavaScript to handle figure movement
+    const figure = document.querySelector('.figure');
+    let isDragging = false;
+    let offset = {x: 0, y: 0};
 
-  innerDiv.addEventListener('touchmove', function(e) {
-    if (initialX === null || initialY === null) {
-      return;
+    figure.addEventListener('mousedown', startDragging);
+    figure.addEventListener('touchstart', startDragging);
+
+    function startDragging(event) {
+        isDragging = true;
+        if (event.type === 'mousedown') {
+            offset.x = event.clientX - figure.getBoundingClientRect().left;
+            offset.y = event.clientY - figure.getBoundingClientRect().top;
+        } else if (event.type === 'touchstart') {
+            offset.x = event.touches[0].clientX - figure.getBoundingClientRect().left;
+            offset.y = event.touches[0].clientY - figure.getBoundingClientRect().top;
+        }
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('touchmove', drag);
+        document.addEventListener('mouseup', stopDragging);
+        document.addEventListener('touchend', stopDragging);
     }
-    var deltaX = e.touches[0].clientX - initialX;
-    var deltaY = e.touches[0].clientY - initialY;
-    currentX += deltaX;
-    currentY += deltaY;
-    innerDiv.style.transform = 'translate(' + currentX + 'px, ' + currentY + 'px)';
-    initialX = e.touches[0].clientX;
-    initialY = e.touches[0].clientY;
-    e.preventDefault(); // prevent default touch action
-  });
 
-  innerDiv.addEventListener('touchend', function() {
-    initialX = null;
-    initialY = null;
-  });
+    function drag(event) {
+        if (!isDragging) return;
+        event.preventDefault();
+        if (event.type === 'mousemove') {
+            figure.style.left = event.clientX - offset.x + 'px';
+            figure.style.top = event.clientY - offset.y + 'px';
+        } else if (event.type === 'touchmove') {
+            figure.style.left = event.touches[0].clientX - offset.x + 'px';
+            figure.style.top = event.touches[0].clientY - offset.y + 'px';
+        }
+    }
+
+    function stopDragging() {
+        isDragging = false;
+        document.removeEventListener('mousemove', drag);
+        document.removeEventListener('touchmove', drag);
+        document.removeEventListener('mouseup', stopDragging);
+        document.removeEventListener('touchend', stopDragging);
+    }
 </script>
+
 </body>
 </html>
