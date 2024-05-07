@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overscroll-behavior:contain;">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -22,7 +22,9 @@
     <link rel="stylesheet" href="assets/css/owl.css" />
     <link rel="stylesheet" href="assets/css/lightbox.css" />
 
-    <link rel="stylesheet" href="main1.css">	
+    <link rel="stylesheet" href="main1.css">
+	
+	
   </head>
 <!--
 Tooplate 2116 Blugoon
@@ -98,11 +100,12 @@ https://www.tooplate.com/view/2116-blugoon
             <div class="row">
               <div class="col-md-12">
                 <div>                
-                  <div id="search" placeholder="Search Name" onclick="changeBodyPositionFixed()"></div>   
+                  <div id="search" placeholder="Search Name" ></div>   
                   <input  type="checkbox" id ="checkBoxExpandAll" onclick="expandTree()"><label id="checkBox-label"> Expand All </label>            
                   </div>
 
-                <div id="familyTreeLocataion" class="iFigure">  </div>               
+                <div id="familyTreeLocataion" class="ifigure" > </div>   	
+				            
                 </div>              
             </div>
          
@@ -403,8 +406,8 @@ https://www.tooplate.com/view/2116-blugoon
     </div>
     <!-- Scripts -->
 
-    <script src="data_SampleSimple.js"></script>
-    <script src="drawFamilyTree.js"></script>
+    <!-- <script src="data_SampleSimple.js"></script> -->
+    <!-- <script src="drawFamilyTree.js"></script> -->
 
     <!-- Bootstrap core JavaScript -->
     
@@ -467,21 +470,8 @@ https://www.tooplate.com/view/2116-blugoon
     </script>
 	
 	<script>
-	function changeBodyPositionFixed() {
-		if ($(window).width()<845) {
-		 document.body.style.position = "fixed";
-		 }
-	}
-	
-	function changeBodyPositionRelative() {
-	 document.body.style.position = "relative";
-	}
-	
-	</script>
-	
-	<script>
     // JavaScript to handle figure movement
-    const figure = document.querySelector('.iFigure');
+    const figure = document.querySelector('.ifigure');
     let isDragging = false;
     let offset = {x: 0, y: 0};
 
@@ -512,5 +502,6 @@ https://www.tooplate.com/view/2116-blugoon
         document.removeEventListener('touchend', stopDragging);
     }
 </script>
+	
   </body>
 </html>
