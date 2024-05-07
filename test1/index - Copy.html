@@ -104,8 +104,35 @@ https://www.tooplate.com/view/2116-blugoon
                   <input  type="checkbox" id ="checkBoxExpandAll" onclick="expandTree()"><label id="checkBox-label"> Expand All </label>            
                   </div>
 
-                <div id="familyTreeLocataion1" class="ifigure" > </div>   	
-				            
+                <div id="familyTreeLocataion1">  <p> dd </p>
+				 <p> dd </p>
+				  <p> dd </p> <p> dd </p>
+				  
+				   <p> dd </p>
+				    <p> dd </p>
+					 <p> dd </p>
+					  <p> dd </p> <p> dd </p> <p> dd </p>
+					  
+					   <p> dd </p> <p> dd </p> <p> dd </p> <p> dd </p> <p> dd </p> <p> dd </p>
+					    <p> dd </p> <p> dd </p> <p> dd </p> <p> dd </p> <p> dd </p>
+						
+						
+						 <p> dd </p> <p> dd </p> <p> dd </p>
+						 
+						  <p> dd </p> <p> dd </p> <p> dd </p>
+						  
+						  
+						   <p> dd </p> <p> dd </p> <p> dd </p> <p> dd </p>
+						   
+						    <p> dd </p> <p> dd </p> <p> dd </p>
+							
+							
+							 <p> dd </p>
+							  <p> dd </p> <p> dd </p> <p> dd </p> <p> dd </p> <p> dd </p> <p> dd </p>
+				
+				
+				
+				</div>               
                 </div>              
             </div>
          
@@ -470,49 +497,54 @@ https://www.tooplate.com/view/2116-blugoon
     </script>
 	
 	<script>
-    // JavaScript to handle figure movement
-    const figure = document.querySelector('.ifigure');
-    let isDragging = false;
-    let offset = {x: 0, y: 0};
+	function changeBodyPositionFixed() {
+		if ($(window).width()<845) {
+		<!-- stopOverscroll(); -->
+		 <!-- document.html.style.overflow = "hidden";	  -->
+		 <!-- document.html.style.overscroll-behavior = "none";	 -->
+		<!-- document.html.scrollIntoView({ block: 'start',  behavior: 'smooth' }); -->
+		
+		<!-- alert ("Hello world! "+ Math.floor(Math.random() * 100)); -->
+		
+			<!-- <style> -->
+		<!-- html { -->
+		<!-- overflow: hidden; -->
+		<!-- overscroll-behavior: none; -->
+	<!-- } -->
+	<!-- </style> -->
+		
+		
+		
+		 }
+	}
+	
+	function changeBodyPositionRelative() {
+	 document.body.style.position = "relative";
+	}
+	
+	<!-- document.ondrag = function (event) { -->
+           <!-- alert ("Hello Drag! "+ Math.floor(Math.random() * 100)); -->
+		   <!-- }; -->
+		   
+	<!-- document.onclick = function (event) { -->
+             <!-- alert ("Hello Click! "+ Math.floor(Math.random() * 100)); -->
+        <!-- }; -->
+		
+	</script>
+	
+	<script> 
+	<!-- $('#familyTreeLocataion1').on( 'mousewheel DOMMouseScroll', function (e) {  -->
+  
+  <!-- var e0 = e.originalEvent; -->
+  <!-- var delta = e0.wheelDelta || -e0.detail; -->
 
-    ifigure.addEventListener('mousedown', startDragging);
-    ifigure.addEventListener('touchstart', startDragging);
-
-    function startDragging(event) {
-        isDragging = true;
-        <!-- if (event.type === 'mousedown') { -->
-            <!-- offset.x = event.clientX - figure.getBoundingClientRect().left; -->
-            <!-- offset.y = event.clientY - figure.getBoundingClientRect().top; -->
-        <!-- } else if (event.type === 'touchstart') { -->
-            <!-- offset.x = event.touches[0].clientX - figure.getBoundingClientRect().left; -->
-            <!-- offset.y = event.touches[0].clientY - figure.getBoundingClientRect().top; -->
-        <!-- } -->
-        document.addEventListener('mousemove', drag);
-        document.addEventListener('touchmove', drag, {passive:false});
-        document.addEventListener('mouseup', stopDragging);
-        document.addEventListener('touchend', stopDragging);
-    }
-
-    function drag(event) {
-        if (!isDragging) return;
-        event.preventDefault();
-        if (event.type === 'mousemove') {
-            <!-- figure.style.left = event.clientX - offset.x + 'px'; -->
-            <!-- figure.style.top = event.clientY - offset.y + 'px'; -->
-        } else if (event.type === 'touchmove') {
-            <!-- figure.style.left = event.touches[0].clientX - offset.x + 'px'; -->
-            <!-- figure.style.top = event.touches[0].clientY - offset.y + 'px'; -->
-        }
-    }
-
-    function stopDragging() {
-        isDragging = false;
-        document.removeEventListener('mousemove', drag);
-        document.removeEventListener('touchmove', drag);
-        document.removeEventListener('mouseup', stopDragging);
-        document.removeEventListener('touchend', stopDragging);
-    }
-</script>
+  <!-- this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30; -->
+  <!-- e.preventDefault();   -->
+	<!-- }); -->
+	
+	$("body").on("touchmove", false);
+	
+	</script>
 	
   </body>
 </html>
