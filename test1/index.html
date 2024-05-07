@@ -24,12 +24,7 @@
 
     <link rel="stylesheet" href="main1.css">
 	<!-- <script>history.scrollRestoration = "manual";</script>	 -->
-		<style>
-		html {
-		overflow: hidden;
-		overscroll-behavior: none;
-	}
-	</style>
+	
   </head>
 <!--
 Tooplate 2116 Blugoon
@@ -476,7 +471,17 @@ https://www.tooplate.com/view/2116-blugoon
 	<script>
 	function changeBodyPositionFixed() {
 		if ($(window).width()<845) {
-		 document.body.style.position = "fixed";	 
+		 document.html.style.overflow = "hidden";	 
+		 document.html.style.overscroll-behavior = "none";	
+		
+			<!-- <style> -->
+		<!-- html { -->
+		<!-- overflow: hidden; -->
+		<!-- overscroll-behavior: none; -->
+	<!-- } -->
+	<!-- </style> -->
+		
+		
 		
 		 }
 	}
