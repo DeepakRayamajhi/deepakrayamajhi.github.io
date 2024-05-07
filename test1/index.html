@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="assets/css/lightbox.css" />
 
     <link rel="stylesheet" href="main1.css">
-	<!-- <script>history.scrollRestoration = "manual";</script>	 -->
+	
 	
   </head>
 <!--
@@ -100,11 +100,11 @@ https://www.tooplate.com/view/2116-blugoon
             <div class="row">
               <div class="col-md-12">
                 <div>                
-                  <div id="search" placeholder="Search Name" onclick="changeBodyPositionFixed()"></div>   
+                  <div id="search" placeholder="Search Name" ></div>   
                   <input  type="checkbox" id ="checkBoxExpandAll" onclick="expandTree()"><label id="checkBox-label"> Expand All </label>            
                   </div>
 
-                <div id="familyTreeLocataion">  </div>               
+                <div id="familyTreeLocataion" onclick="changeBodyPositionFixed()">  </div>               
                 </div>              
             </div>
          
@@ -471,8 +471,12 @@ https://www.tooplate.com/view/2116-blugoon
 	<script>
 	function changeBodyPositionFixed() {
 		if ($(window).width()<845) {
-		 document.html.style.overflow = "hidden";	 
-		 document.html.style.overscroll-behavior = "none";	
+		<!-- stopOverscroll(); -->
+		 <!-- document.html.style.overflow = "hidden";	  -->
+		 <!-- document.html.style.overscroll-behavior = "none";	 -->
+		<!-- document.html.scrollIntoView({ block: 'start',  behavior: 'smooth' }); -->
+		
+		<!-- alert ("Hello world! "+ Math.floor(Math.random() * 100)); -->
 		
 			<!-- <style> -->
 		<!-- html { -->
@@ -490,6 +494,16 @@ https://www.tooplate.com/view/2116-blugoon
 	 document.body.style.position = "relative";
 	}
 	
+	<!-- document.ondrag = function (event) { -->
+           <!-- alert ("Hello Drag! "+ Math.floor(Math.random() * 100)); -->
+		   <!-- }; -->
+		   
+	<!-- document.onclick = function (event) { -->
+             <!-- alert ("Hello Click! "+ Math.floor(Math.random() * 100)); -->
+        <!-- }; -->
+		
 	</script>
+	
+	
   </body>
 </html>
