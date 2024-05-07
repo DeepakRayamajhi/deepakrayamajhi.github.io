@@ -2,7 +2,7 @@ data = {
    "start": "HemantUnknUnkn",
    "persons": {
        "DeepakPritChan": { "id": "DeepakPritChan", "name": "Deepak", "birthyear": "1984", "deathyear": "?", "birthplace":"Gulmi, Nepal", "own_unions": ["uDeepakPritChan"], "parent_union": "uPrithKhimRata" ,"gender":"Male" },
-       "DeepakPritChanSpouse": { "id": "DeepakPritChanSpouse", "name": "Jyoti (Wife)", "birthyear": "1986", "deathyear": "?", "birthplace":"Gulmi, Nepal",  "own_unions": ["uDeepakPritChan"], "gender":"Female"  },
+       "DeepakPritChanSpouse": { "id": "DeepakPritChanSpouse", "name": "Jyoti (Wife)", "birthyear": "1986", "deathyear": "?", "birthplace":"Gulmi, Nepal",  "own_unions": ["uDeepakPritChan"], "parent_union": "uTekRamNish" ,"gender":"Female"  },
        "DezyanDeepJyot": { "id": "DezyanDeepJyot", "name": "Dezyan", "birthyear": "2013", "deathyear": "?", "birthplace":"California, USA", "own_unions": [], "parent_union": "uDeepakPritChan" ,"gender":"Male" },
        "IshaanDeepJyot": { "id": "IshaanDeepJyot", "name": "Ishaan", "birthyear": "2015", "deathyear": "?", "birthplace":"Oregion, USA", "own_unions": [], "parent_union": "uDeepakPritChan" ,"gender":"Male" },
        "NarayanPritChan": { "id": "NarayanPritChan", "name": "Narayan", "birthyear": "1981", "deathyear": "?", "birthplace":"Gulmi, Nepal", "own_unions": ["uNarayanPritChan"], "parent_union": "uPrithKhimRata" ,"gender":"Male" },
@@ -294,6 +294,16 @@ data = {
        "AjabHemaUnknSpouse": { "id": "AjabHemaUnknSpouse", "name": "Unknown (Wife)", "birthyear": "?", "deathyear": "?", "birthplace":"?",  "own_unions": ["uAjabHemaUnkn"], "gender":"Female"  },
        "HemantUnknUnkn": { "id": "HemantUnknUnkn", "name": "Hemant Singh", "birthyear": "?", "deathyear": "?", "birthplace":"?", "own_unions": ["uHemantUnknUnkn"] ,"gender":"Male" },
        "HemantUnknUnknSpouse": { "id": "HemantUnknUnknSpouse", "name": "Unknown (Wife)", "birthyear": "?", "deathyear": "?", "birthplace":"?",  "own_unions": ["uHemantUnknUnkn"], "gender":"Female"  },
+	   "TekRamNish": { "id": "TekRamNish", "name": "Tek Bahadur", "birthyear": "?", "deathyear": "?", "birthplace":"Gulmi, Nepal", "own_unions": ["uTekRamNish"] ,"gender":"Male" },
+       "TekRamNishSpouse": { "id": "TekRamNishSpouse", "name": "Asha (Wife)", "birthyear": "?", "deathyear": "?", "birthplace":"?",  "own_unions": ["uTekRamNish"], "gender":"Female"  },
+       "ArjunTekAsha": { "id": "ArjunTekAsha", "name": "Arjun", "birthyear": "?", "deathyear": "?", "birthplace":"Gulmi, Nepal", "own_unions": ["uArjunTekAsha"], "parent_union": "uTekRamNish" ,"gender":"Male" },
+       "ArjunTekAshaSpouse": { "id": "ArjunTekAshaSpouse", "name": "Renu (Wife)", "birthyear": "?", "deathyear": "?", "birthplace":"?",  "own_unions": ["uArjunTekAsha"], "gender":"Female"  },
+       "SharmilaTekAsha": { "id": "SharmilaTekAsha", "name": "Sharmila(Ramesh) (Daughter)", "birthyear": "?", "deathyear": "?", "birthplace":"Gulmi, Nepal", "own_unions": [], "parent_union": "uTekRamNish" ,"gender":"Female" },
+       "ShardaTekAsha": { "id": "ShardaTekAsha", "name": "Sharda(Buddhi) (Daughter)", "birthyear": "?", "deathyear": "?", "birthplace":"Gulmi, Nepal", "own_unions": [], "parent_union": "uTekRamNish" ,"gender":"Female" },
+	   "PratibhaArjuRenu": { "id": "PratibhaArjuRenu", "name": "Pratibha(Daughter)", "birthyear": "?", "deathyear": "?", "birthplace":"Gulmi, Nepal", "own_unions": [], "parent_union": "uArjunTekAsha" ,"gender":"Female" },
+       "PrabalArjuRenu": { "id": "PrabalArjuRenu", "name": "Prabal", "birthyear": "?", "deathyear": "?", "birthplace":"Gulmi, Nepal", "own_unions": [], "parent_union": "uArjunTekAsha" ,"gender":"Male" },
+	   
+	   
    },
    "unions": {
        "uDeepakPritChan": { "id": "uDeepakPritChan", "partner": ["DeepakPritChan", "DeepakPritChanSpouse"], "children": ["DezyanDeepJyot", "IshaanDeepJyot"], "unionYear": 2 },
@@ -374,6 +384,8 @@ data = {
        "uVeerHemaUnkn": { "id": "uVeerHemaUnkn", "partner": ["VeerHemaUnkn", "VeerHemaUnknSpouse"], "unionYear": 2 },
        "uAjabHemaUnkn": { "id": "uAjabHemaUnkn", "partner": ["AjabHemaUnkn", "AjabHemaUnknSpouse"], "unionYear": 2 },
        "uHemantUnknUnkn": { "id": "uHemantUnknUnkn", "partner": ["HemantUnknUnkn", "HemantUnknUnknSpouse"], "children": ["BahadurHemaUnkn", "BalbhadraHemaUnkn", "VeerHemaUnkn", "AjabHemaUnkn"], "unionYear": 2 },
+	   "uTekRamNish": { "id": "uTekRamNish", "partner": ["TekRamNish", "TekRamNishSpouse"], "children": ["DeepakPritChanSpouse", "ArjunTekAsha", "SharmilaTekAsha", "ShardaTekAsha"], "unionYear": 2 },
+       "uArjunTekAsha": { "id": "uArjunTekAsha", "partner": ["ArjunTekAsha", "ArjunTekAshaSpouse"], "children": ["PratibhaArjuRenu", "PrabalArjuRenu"], "unionYear": 2 },
    },
    "links": [
        ["DeepakPritChan", "uDeepakPritChan"],
@@ -747,5 +759,15 @@ data = {
        ["uHemantUnknUnkn", "BalbhadraHemaUnkn"],
        ["uHemantUnknUnkn", "VeerHemaUnkn"],
        ["uHemantUnknUnkn", "AjabHemaUnkn"],
+	   ["TekRamNish", "uTekRamNish"],
+       ["TekRamNishSpouse", "uTekRamNish"],
+       ["ArjunTekAsha", "uArjunTekAsha"],
+       ["ArjunTekAshaSpouse", "uArjunTekAsha"],
+       ["uTekRamNish", "DeepakPritChanSpouse"],
+       ["uTekRamNish", "ArjunTekAsha"],
+       ["uTekRamNish", "SharmilaTekAsha"],
+       ["uTekRamNish", "ShardaTekAsha"],
+	   ["uArjunTekAsha", "PratibhaArjuRenu"],
+       ["uArjunTekAsha", "PrabalArjuRenu"],
    ]
 }

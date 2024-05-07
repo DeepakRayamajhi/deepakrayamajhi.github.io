@@ -11,11 +11,10 @@ https://www.tooplate.com/view/2116-blugoon
 body {
     font-family: 'Roboto', sans-serif;
 	overflow-x: hidden;
-    overflow-y: hidden; /* added by DR */
 }
 
 #page-wraper {
-    background: black no-repeat center center fixed; /* #4AA0DD */
+    background: #101111 no-repeat center center fixed; /* #4AA0DD */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -101,7 +100,7 @@ html {
 }
 
 .container {
-    margin: 0px;
+    margin: 0 auto;
 }
 
 .top-header {
@@ -297,18 +296,17 @@ html {
 
 /* Section */
 
-/* .section {
-    color: #13bd3d;
-    width: 70%;
-    right: 5%;
-    left: 25%;
+.section {
+    color: #fff;
+    width: 55%;
+    right: 10%;
+    left: 35%;
     position: relative;
     min-height: 100vh;
-   
-} */
+    padding-bottom: 60px;
+    border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+}
 
-
-/* 
 .section-heading {
     text-align: left;
     padding: 10px 0 10px 0;
@@ -332,7 +330,7 @@ html {
     font-size: 14px;
     color: #fff;
     letter-spacing: 1px;
-} */
+}
 
 /* Buttons */
 
@@ -376,11 +374,11 @@ button:hover {
 
 
 /* Left & Right Post */
-/* 
+
 .right-image-post {
     margin-bottom: 60px;
     padding-bottom: 60px;
-    border-bottom: 0px solid black; 
+    border-bottom: 0px solid black; /* rgba(250, 250, 250, 0.1) */
 }
 
 .left-image img,
@@ -401,12 +399,12 @@ button:hover {
 .right-image-post .white-button,
 .left-image-post .white-button {
     margin-top: 30px;
-} */
+}
 
 
 /* Services */
 
-/* .my-services .col-md-6 {
+.my-services .col-md-6 {
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -455,13 +453,13 @@ button:hover {
 }
 .service-item:hover .fa {
 	color: #000;
-} */
+}
 
 
 /* My Work */
 
 
-/* .isotope-wrapper {
+.isotope-wrapper {
     position: relative;
     width: 100%;
     margin: auto;
@@ -611,12 +609,12 @@ figure.snip1321.hover:after {
   -webkit-transform: rotateX(0);
   transform: rotateX(0);
   opacity: 0.9;
-} */
+}
 
 
 /* Contact */
 
-/* section.contact-me {
+section.contact-me {
     border-bottom: none;
 }
 
@@ -659,7 +657,7 @@ figure.snip1321.hover:after {
 
 #contact {
     text-align: center;
-} */
+}
 
 .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #FFF;
@@ -674,21 +672,20 @@ figure.snip1321.hover:after {
   color: #FFF;
 }
 
-
-@media screen and (max-width: 2400px) {
+@media screen and (max-width: 1680px) {
     .menu {
-        left: 1%;
+        left: 4%;
     }
 
-    .section {       
-        width: 77%;
-        right: 1%;
-        left: 23%;
-        top: 0px;
+    .section {
+        color: #fff;
+        width: 65%;
+        right: 5%;
+        left: 30%;
     }
 }
 
-@media screen and (max-width: 1500px) and (min-width: 846px) { 
+@media screen and (max-width: 1680px) and (min-width: 846px) { 
     .menu .social-network ul li a {
         width: 36px;
         height: 36px;
@@ -702,9 +699,6 @@ figure.snip1321.hover:after {
     .menu .image {
         margin-top: 60px;
     }
-
-
-
 }
 
 @media screen and (max-width: 1280px) {
@@ -725,14 +719,6 @@ figure.snip1321.hover:after {
     .right-image-post .white-button,
     .left-image-post .white-button {
         margin-top: 25px;
-    }
-
-    .section {
-        color: #ab23af;
-        width: 78%;
-        right: 2%;
-        left: 20%;
-        top: 20px;
     }
 
 }
@@ -782,8 +768,8 @@ figure.snip1321.hover:after {
     }
 
     .menu .container {
-        padding-left:0px;
-        padding-right: 0px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .menu.open {
@@ -796,9 +782,9 @@ figure.snip1321.hover:after {
         display: inline-block;
     }
     .section {
-        width: 100%;
-        /* right: 3%;
-        left: 3%; */
+        width: 94%;
+        right: 3%;
+        left: 3%;
     }
     .isotope-item {
         width: 94%;
@@ -824,13 +810,5 @@ figure.snip1321.hover:after {
 		 padding: 10px 0 0 0;
 	}
 	
-
-    .section {       
-        width:100vw;
-        height:100vw;
-        right: 0px;
-        left: 0px;
-        top: 0px;
-    }
 	
 }

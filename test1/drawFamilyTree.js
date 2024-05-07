@@ -319,5 +319,12 @@ function collapseAll(){
 }
 
 
-
+function expandTree() {
+	if (document.getElementById('checkBoxExpandAll').checked) {
+		expandAll();			
+	} else {
+	collapseAll();
+	// location.reload();
+	}
+}
 
