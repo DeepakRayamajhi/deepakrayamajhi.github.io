@@ -90,12 +90,12 @@ var diagonal = d3.svg.diagonal()
 	.projection(function(d) { return [d.y, d.x]; });
 
 
-var width = d3.select("#familyTreeLocataion")[0][0].clientWidth,
-height = d3.select("#familyTreeLocataion")[0][0].clientHeight;
+var width = d3.select("#familyTree")[0][0].clientWidth,
+height = d3.select("#familyTree")[0][0].clientHeight;
 
 
 
-var svg = d3.select("#familyTreeLocataion").append("svg")
+var svg = d3.select("#familyTree").append("svg")
 	.attr("width",width)
 	.attr("height", height)
 	.append("g")

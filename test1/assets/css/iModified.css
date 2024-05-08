@@ -1,0 +1,117 @@
+/* body { */
+    /* width: 100%; */
+    /* height: 100%; */
+    /* overflow: hidden; */
+	/* background: #404040; */
+/* } */
+
+button {
+	color:blue;
+}
+
+
+.node {
+	cursor: pointer;
+}
+
+.node circle {
+	fill: orange;
+	stroke: white;
+	stroke-width: 1.5px;
+}
+
+.found {
+	fill: blue;
+	stroke: yellow;
+}
+.node text {
+		/* font: 8px sans-serif; */
+		font-weight: bold;
+		fill: green;
+}
+
+.link {
+	fill: none;
+	stroke: gray;
+	stroke-width:3px;
+}
+/*Just to ensure the select2 box is "glued" to the top*/
+.search {
+  width: 200px;
+}
+
+#familyTree {
+	position:relative; 
+	width:100%; 
+	height:650px;
+	background:rgb(26, 1, 1);
+}
+
+#familyTreeLocataion1 {
+	position:relative; 
+	width:100%; 
+	height:400px;
+	background:red;
+	overflow: hidden;
+}
+
+#checkBoxExpandAll {
+	margin-left:10px;
+	
+}
+
+#checkBox-label {
+	color:white;
+	
+}
+
+
+
+
+/*Update Css as per requirements*/
+
+/* #page-wraper { */
+    /* background: #4AA0DD no-repeat center center fixed; /*  #101111*/    */
+/* } */
+
+
+.menu-toggle {
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  position: fixed;
+  right: 15px;
+  top: 15px;
+}
+
+#menu-toggle {
+    z-index: 999;
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color:  black;/*    #2279BD;  black;*/
+    background-color: #fff;
+    width: 35px;
+    height: 30px;
+	line-height: 30px;
+    text-align: center;
+    display: inline-block;
+	font-size: 1.3em;
+    
+}
+
+.section-heading {
+    text-align: left;
+    padding: 10px 0 10px 0;
+	font-size: 24px;
+	padding: 10px 0 0 0;
+}
+
+
+.right-image-post {
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+    border-bottom: 0px solid black; /* rgba(250, 250, 250, 0.1) */
+}
+

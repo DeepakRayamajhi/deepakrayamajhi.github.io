@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="assets/css/owl.css" />
     <link rel="stylesheet" href="assets/css/lightbox.css" />
 
-    <link rel="stylesheet" href="main1.css">	
+    <link rel="stylesheet" href="assets/css/iModified.css">	
   </head>
 <!--
 Tooplate 2116 Blugoon
@@ -47,10 +47,10 @@ https://www.tooplate.com/view/2116-blugoon
             </div>
             <nav class="main-nav" role="navigation" >
               <ul class="main-menu" onclick="changeBodyPositionRelative()">
-                <li><a href="#section1">Family Tree</a></li>
-                <li><a href="#section2">Another Layout</a></li>
+                <li><a href="#section1">About</a></li>
+                <li><a href="#section2">Family Tree</a></li>
                 <li><a href="#section3">Gallery</a></li>
-                <li><a href="#section4">About</a></li>
+                <li><a href="#section4">Blog</a></li>
                 <li><a href="#section5">Contact</a></li>
               </ul>
             </nav>
@@ -78,41 +78,15 @@ https://www.tooplate.com/view/2116-blugoon
           </div>
         </div>
       </div>
-
-      <section class="section about-me" data-section="section1">
+	  
+	  
+	  <section class="section my-services" data-section="section1">
         <div class="container">
-        <div class="top-header">
+		 <div class="top-header">
         	<img src="assets/images/family_banner.jpg" alt="family banner" />
         </div>
           <div class="section-heading">
-          
-            <h2>Rayamajhi Family Tree</h2>
-            <!-- <div class="line-dec"></div> -->
-
-            <!-- <span>Blugoon is free HTML template for everyone. This is a Bootstrap v4.3.1 layout which you can fully customize for your websites. Please tell your friends about Tooplate. Thank you.</span> -->
-
-
-
-          </div>
-         
-            <div class="row">
-              <div class="col-md-12">
-                <div>                
-                  <div id="search" placeholder="Search Name" onclick="changeBodyPositionFixed()"></div>   
-                  <input  type="checkbox" id ="checkBoxExpandAll" onclick="expandTree()"><label id="checkBox-label"> Expand All </label>            
-                  </div>
-
-                <div id="familyTreeLocataion" class="iFigure">  </div>               
-                </div>              
-            </div>
-         
-        </div>
-      </section>
-
-      <section class="section my-services" data-section="section2">
-        <div class="container">
-          <div class="section-heading">
-            <h2>Greatest Features</h2>
+            <h2>About</h2>
             <div class="line-dec"></div>
             <span>Praesent posuere fringilla elit, non maximus tellus posuere nec. Nunc eu sapien nec est elementum sodales.</span>
           </div>
@@ -148,6 +122,26 @@ https://www.tooplate.com/view/2116-blugoon
           </div>
         </div>
       </section>
+
+      <section class="section about-me" data-section="section2">
+        <div class="container">       
+          <div class="section-heading">          
+            <h2>Rayamajhi Family Tree</h2>           
+          </div>         
+            <div class="row">
+              <div class="col-md-12">
+                <div>                
+                  <div id="search" placeholder="Search Name" onclick="changeBodyPositionFixed()"></div>   
+                  <input  type="checkbox" id ="checkBoxExpandAll" onclick="expandTree()"><label id="checkBox-label"> Expand All </label>            
+                  </div>
+                <div id="familyTree" class="iTreeSpace">  </div>               
+                </div>              
+            </div>
+         
+        </div>
+      </section>
+
+      
 
       <section class="section my-work" data-section="section3">
         <div class="container">
@@ -349,6 +343,46 @@ https://www.tooplate.com/view/2116-blugoon
           </div>
         </div>
       </section>
+	  
+	   <section class="section my-services" data-section="section4">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Extra Features</h2>
+            <div class="line-dec"></div>
+            <span>Praesent posuere fringilla elit, non maximus tellus posuere nec. Nunc eu sapien nec est elementum sodales.</span>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="service-item">
+                <i class="fa fa-area-chart"></i>
+                <h4>Top Performance</h4>
+                <p>Donec sit amet tempor quam. Maecenas nec aliquam leo, sed tincidunt urna.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <i class="fa fa-check-square-o"></i>
+                <h4>Trusted Service</h4>
+                <p>Etiam at porta nulla, et euismod enim. Nullam semper ipsum et dui scelerisque.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <i class="fa fa-question-circle"></i>
+                <h4>Need Help?</h4>
+                <p>Phasellus orci leo, elementum ac risus id, euismod porta lorem. Quisque feugiat.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <i class="fa fa-support"></i>
+                <h4>Quick Support</h4>
+                <p>Mauris eu est vitae erat condimentum pellentesque. Fusce vehicula nunc.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section class="section contact-me" data-section="section5">
         <div class="container">
@@ -403,8 +437,8 @@ https://www.tooplate.com/view/2116-blugoon
     </div>
     <!-- Scripts -->
 
-    <script src="data_SampleSimple.js"></script>
-    <script src="drawFamilyTree.js"></script>
+    <script src="assets/data/data_SampleSimple.js"></script>
+    <script src="assets/data/drawFamilyTree.js"></script>
 
     <!-- Bootstrap core JavaScript -->
     
@@ -481,12 +515,12 @@ https://www.tooplate.com/view/2116-blugoon
 	
 	<script>
     // JavaScript to handle figure movement
-    const figure = document.querySelector('.iFigure');
+    const trackTreeSpace = document.querySelector('.iTreeSpace');
     let isDragging = false;
     let offset = {x: 0, y: 0};
 
-    figure.addEventListener('mousedown', startDragging);
-    figure.addEventListener('touchstart', startDragging);
+    trackTreeSpace.addEventListener('mousedown', startDragging);
+    trackTreeSpace.addEventListener('touchstart', startDragging);
 
     function startDragging(event) {
         isDragging = true;
