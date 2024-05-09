@@ -185,7 +185,8 @@ function update(source) {
 	links = tree.links(nodes);
 
 	// Normalize for fixed-depth.
-	nodes.forEach(function(d) { d.y = d.depth * 200; });
+	nodes.forEach(function(d) { d.y = d.depth * 300; });
+	nodes.forEach(function(d) { d.x = d.x * 1.5; });
 
 	// Update the nodesâ€¦
 	var node = svg.selectAll("g.node")
@@ -199,7 +200,7 @@ function update(source) {
 
 	nodeEnter.append("circle")
 	.attr("r", 1e-6)
-	.style("fill", function(d) { return d._children ? "blue" : "#fff"; });
+	.style("fill", function(d) { return d._children ? "blue" : "red"; }); //#fff
 
 	nodeEnter.append("text")
 		.attr("x", function(d) { return d.children || d._children ? -20 : 20; })
@@ -223,18 +224,18 @@ function update(source) {
 		.attr("r", 10)
 		.style("fill", function(d) {
 			if(d.class === "found"){
-				return "white"; //red
+				return "rgb(128,128,128)"; //red
 			}
 			else if(d._children){
 				return "orange";
 			}
 			else{
-				return "white";
+				return "rgb(128,128,128)";
 			}
 		})
 		.style("stroke", function(d) {
 			if(d.class === "found"){
-				return "red"; //red
+				return "black"; //red
 			}
 	});
 
