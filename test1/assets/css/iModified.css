@@ -38,6 +38,7 @@ button {
 /*Just to ensure the select2 box is "glued" to the top*/
 .search {
   width: 200px;
+  padding: 0px 0 20px 0;
 }
 
 #familyTree {
@@ -61,10 +62,17 @@ button {
 	
 }
 
-#checkBox-label {
+.checkBox-label {
 	color:white;
+	transform: translateY(-10px);
+	padding: 0 0 0 7px;
 	
 }
+
+.checkBox-box {
+	transform: translateY(-10px);
+}
+
 
 
 
@@ -105,9 +113,16 @@ button {
 .section-heading {
     text-align: left;
     padding: 10px 0 10px 0;
-	font-size: 18px;
-	padding: 10px 0 0 0;
+	font-size: 24px;
+	padding: 10px 0 10px 0;
 }
+
+.section-heading h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+}
+
 
 
 .right-image-post {
