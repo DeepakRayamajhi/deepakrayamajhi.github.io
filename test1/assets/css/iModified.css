@@ -123,6 +123,12 @@ button {
     color: #fff;
 }
 
+.section-heading .line-dec {
+    max-width: 500px;
+    height: 5px;
+    background-color: #fff;
+    margin: 5px 0;
+}
 
 
 .right-image-post {
@@ -131,3 +137,9 @@ button {
     border-bottom: 0px solid black; /* rgba(250, 250, 250, 0.1) */
 }
 
+p {
+	letter-spacing: 0.5px;
+    line-height: 2em;
+    color: #fff;
+	padding: 0 0 0 15px;
+}
