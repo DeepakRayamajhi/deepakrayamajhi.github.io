@@ -143,3 +143,12 @@ p {
     color: #fff;
 	padding: 0 0 0 15px;
 }
+
+@media screen and (max-width: 845px) {  
+.section-heading h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+}
+
+}
