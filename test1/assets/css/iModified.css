@@ -102,6 +102,13 @@ a:link,a:active {
 	display: inline-block
 }
 
+#expandFigure {
+	width: 20px; 
+	transform: translate(10px,-10px)
+	
+}
+
+
 
 
 
