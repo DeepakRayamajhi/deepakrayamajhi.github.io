@@ -76,7 +76,7 @@ button {
 #section-heading-top {
   display: flex;
   justify-content: space-between;
-  padding: 10px 10px 10px 10px;
+  padding: 2px 5px 5px 5px;
   font-size: 24px;
   font-weight: 700;
   color: #fff;
@@ -89,11 +89,14 @@ button {
 a:visited {
 	color: #fff;
 	text-decoration: none;
+	display: inline-block
 }
 
 a:link,a:active {
 	color: #FF0;
 	text-decoration: none;
+	padding: 0px 0px 0px 0px;
+	display: inline-block
 }
 
 
