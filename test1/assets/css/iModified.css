@@ -73,10 +73,13 @@ button {
 	transform: translateY(-10px);
 }
 
-#section-heading-top {
+#section-heading-inline {
   display: flex;
   justify-content: space-between;
   padding: 2px 5px 5px 5px;
+}
+
+#section-heading-inline>span {
   font-size: 24px;
   font-weight: 700;
   color: #fff;
@@ -175,8 +178,10 @@ p {
 @media screen and (max-width: 845px) {  
 .section-heading h2 {
     font-size: 18px;
-    font-weight: 700;
-    color: #fff;
 }
 
+#section-heading-inline>span {
+  font-size: 18px;
+
+}
 }
