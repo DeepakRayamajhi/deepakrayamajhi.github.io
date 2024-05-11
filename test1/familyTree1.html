@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Rayamajhi Ancestry</title>
+    <meta name="description" content="" />
+    <meta name="author" content="Tooplate" />
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.css"></link>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <link rel="stylesheet" href="assets/css/iModified.css">	
+  </head>
+<!--
+Tooplate 2116 Blugoon
+https://www.tooplate.com/view/2116-blugoon
+-->
+  <body>
+  <div id="page-wraper-mod">
+  
+  <div id="section-heading-top" >
+   
+	  <span>Rayamajhi Ancestry</span>
+	  <div id="section-heading-top" >
+	  <a href="https://deepakrayamajhi.github.io/test1/">Home</a>
+		 </div>
+  
+  </div>
+  
+  <div>
+	<div>                
+	  <div id="search" placeholder="Search Names"></div>   
+	  <input  type="checkbox" id ="checkBoxExpandAll"  class="checkBox-box" onclick="expandTree()" checked><label class="checkBox-label" > Expand All </label>            
+	  </div>
+	<div id="familyTree" class="iTreeSpace">  </div>               
+   </div>   
+  </div>
+  
+    <!-- Scripts -->
+    <script src="assets/data/data_SampleSimple.js"></script>
+    <script src="assets/data/drawFamilyTree.js"></script>
+   
+	<script>
+    // JavaScript to handle figure movement
+    const trackTreeSpace = document.querySelector('.iTreeSpace');
+    let isDragging = false;
+    let offset = {x: 0, y: 0};
+
+    trackTreeSpace.addEventListener('mousedown', startDragging);
+    trackTreeSpace.addEventListener('touchstart', startDragging);
+
+    function startDragging(event) {
+        isDragging = true;
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('touchmove', drag, {passive:false});
+        document.addEventListener('mouseup', stopDragging);
+        document.addEventListener('touchend', stopDragging);
+    }
+
+    function drag(event) {
+        if (!isDragging) return;
+        event.preventDefault();
+        if (event.type === 'mousemove') {         
+        } else if (event.type === 'touchmove') {         
+        }
+    }
+
+    function stopDragging() {
+        isDragging = false;
+        document.removeEventListener('mousemove', drag);
+        document.removeEventListener('touchmove', drag);
+        document.removeEventListener('mouseup', stopDragging);
+        document.removeEventListener('touchend', stopDragging);
+    }
+</script>
+  </body>
+</html>

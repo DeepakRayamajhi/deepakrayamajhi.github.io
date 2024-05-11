@@ -73,6 +73,31 @@ button {
 	transform: translateY(-10px);
 }
 
+#section-heading-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 10px 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+#page-wraper-mod {
+	background: #4AA0DD no-repeat center center fixed;
+}
+
+a:visited {
+	color: #fff;
+	text-decoration: none;
+}
+
+a:link,a:active {
+	color: #FF0;
+	text-decoration: none;
+}
+
+
+
 
 
 
