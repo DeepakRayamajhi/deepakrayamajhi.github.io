@@ -126,6 +126,33 @@ h4 {
 }
 
 
+table {
+  /* font-family: arial, sans-serif; */
+  border-collapse: collapse;
+  width: 100%;
+  margin-left:30px;
+  margin-right:30px;
+}
+
+th {
+  border: 3px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-size:1.25em;
+ }
+ 
+ td {
+  border: 3px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-size:1em;
+  
+ }
+
+tr:nth-child(even) {
+  background-color: grey;
+}
+
 
 
 /*Update Css as per requirements*/
