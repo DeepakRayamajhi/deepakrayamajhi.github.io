@@ -5,29 +5,37 @@
 	/* background: #404040; */
 /* } */
 
-button {
-	color:blue;
+:root {
+	--defaultNodeColor:grey;
+	--nodeColorWithChildern:orange;
+	--nodeFoundColorChange:blue;	
+	--nodeFoundBorderColorChange:red;
+	--nodeLinkColorChange:magenta;
+	
+	--canvasBackgroundColor:black;
 }
-
 
 .node {
-	cursor: pointer;
+	cursor: pointer;		
 }
 
-.node circle {
-	fill: orange;
-	stroke: white;
+.node circle {	
+	stroke: black;
 	stroke-width: 1.5px;
 }
 
 .found {
-	fill: blue;
-	stroke: yellow;
+	/* fill: blue;  */
+	/* stroke: yellow; */
+	
 }
+
 .node text {
 		/* font: 8px sans-serif; */
 		font-weight: bold;
 		fill: green;
+		background: black;
+		
 }
 
 .link {
@@ -35,6 +43,7 @@ button {
 	stroke: gray;
 	stroke-width:3px;
 }
+
 /*Just to ensure the select2 box is "glued" to the top*/
 .search {
   width: 250px;
@@ -109,8 +118,12 @@ a:link,a:active {
 }
 
 
-
-
+h4 {
+	padding: 0 0 0 15px;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #fff;
+}
 
 
 

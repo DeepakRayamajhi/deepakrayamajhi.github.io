@@ -36,7 +36,7 @@ peopleNames.sort((a,b) => (a.text > b.text) ? 1 : ((b.text > a.text) ? -1 : 0));
 // ***********************************************************
 
 var zoom = d3.behavior.zoom()
-.scaleExtent([0.1, 10])
+.scaleExtent([0.0005, 10])
 .on("zoom", zoomed);
 
 
@@ -103,12 +103,13 @@ var svg = d3.select("#familyTree").append("svg")
 	.call(zoom)
 	.append("g");
 
+let ele = document.querySelector(':root');	
 var rect = svg.append("rect")
 .attr("width", 40000000)
 .attr("height", 40000000)
 .attr("x",-20000000)
 .attr("y",-20000000)
-.style("fill", "none")
+.style("fill", getComputedStyle(ele).getPropertyValue('--canvasBackgroundColor'))
 .style("pointer-events", "all");
 
 //recursively collapse children
@@ -199,12 +200,11 @@ function update(source) {
 	.on("click", click);
 
 	nodeEnter.append("circle")
-	.attr("r", 1e-6)
-	.style("fill", function(d) { return d._children ? "blue" : "red"; }); //#fff
+	.attr("r", 1e-6);
 
 	nodeEnter.append("text")
 		.attr("x", function(d) { return d.children || d._children ? -20 : 20; })
-		.attr("dy", ".35em")
+		.attr("dy", "-0.1em")
 		.attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
 		.text(function(d) { 
 		  if (d.gender.toLowerCase()=='male') {
@@ -212,8 +212,9 @@ function update(source) {
 		  } else {
 			return d.name+ " (" + d.spouse + ") (D)"; 
 		  }			  
-		})
-		.style("fill-opacity", 1e-6);
+		});
+		
+		
 
 	// Transition nodes to their new position.
 	var nodeUpdate = node.transition()
@@ -224,35 +225,30 @@ function update(source) {
 		.attr("r", 10)
 		.style("fill", function(d) {
 			if(d.class === "found"){
-				return "rgb(128,128,128)"; //red
+				let ele = document.querySelector(':root');	
+				return getComputedStyle(ele).getPropertyValue('--nodeFoundColorChange');
 			}
 			else if(d._children){
-				return "orange";
+				let ele = document.querySelector(':root');	
+				return getComputedStyle(ele).getPropertyValue('--nodeColorWithChildern');
 			}
 			else{
-				return "rgb(128,128,128)";
+				let ele = document.querySelector(':root');	
+				return getComputedStyle(ele).getPropertyValue('--defaultNodeColor');
 			}
 		})
 		.style("stroke", function(d) {
 			if(d.class === "found"){
-				return "black"; //red
+				let ele = document.querySelector(':root');	
+				return getComputedStyle(ele).getPropertyValue('--nodeFoundBorderColorChange');
 			}
 	});
-
-	nodeUpdate.select("text")
-		.style("fill-opacity", 1);
 
 	// Transition exiting nodes to the parent's new position.
 	var nodeExit = node.exit().transition()
 		.duration(duration)
 		.attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
 		.remove();
-
-	nodeExit.select("circle")
-		.attr("r", 1e-6);
-
-	nodeExit.select("text")
-		.style("fill-opacity", 1e-6);
 
 	// Update the linksâ€¦
 	var link = svg.selectAll("path.link")
@@ -266,13 +262,14 @@ function update(source) {
 			return diagonal({source: o, target: o});
 		});
 
-	// Transition links to their new position.
-	link.transition()
+	// Transition links to their new position.		
+		link.transition()
 		.duration(duration)
 		.attr("d", diagonal)
 		.style("stroke",function(d){
 			if(d.target.class==="found"){
-				return "blue";
+				 let ele = document.querySelector(':root');	
+				return getComputedStyle(ele).getPropertyValue('--nodeLinkColorChange');
 			}
 		});
 
