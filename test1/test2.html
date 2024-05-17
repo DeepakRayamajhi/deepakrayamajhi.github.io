@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select2 Dynamic Example</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Include Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script src="assets/data/data_SampleSimple.js"></script>
+	
+	<style>
+	
+	 .custom-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f1f1f1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+            max-width: 300px;
+        }
+
+        .custom-alert-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .close-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .show-alert-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+		
+		.custom-Alert-Message {
+			color: blue;
+			font-weight: bold;
+			font-size: 1em;
+		
+		}
+		
+    
+    </style>
+</head>
+<body>
+    <select id="mySelect"  style="width: 300px; height: 20px" multiple="true"  ></select>   
+	
+	 <div class="custom-alert" id="customAlert">
+        <div class="custom-alert-title" id="customAlertTitle">
+		</div>
+        <span id="customAlertMessage" class="custom-Alert-Message">
+		</span>
+		<br><br>
+        <button class="close-button" onclick="hideCustomAlert()"> Close 
+		</button>
+    </div>
+
+
+    <script>	
+	
+	
+		// *********** Convert flat data into a nice tree ***************
+		// create a name: node map
+		var dataMap = data.reduce(function(map, node) {
+			map[node.id] = node;
+			return map;
+		}, {});	
+		
+		
+		// Function to search for an item by id
+		function searchParentById(id) {
+			return dataMap[id] || null;
+		}
+
+		var treeData = [];
+		data.forEach(function(node) {
+		// add to parent
+		var parent = dataMap[node.parent];
+		if (parent) {
+			// create child array if it doesn't exist
+			(parent.children || (parent.children = []))
+				// add node to child array
+				.push(node);
+		} else {
+			// parent is null or missing
+			treeData.push(node);
+		}
+		});
+
+		// JSON data		
+		function getNames(data) {	
+			var leaves=[];			
+			for (var d in data)  {	
+				leaves.push({id: data[d].id,text:data[d].name});
+			}		
+			return leaves;
+		}	
+	
+		// Function to dynamically add options to Select2
+		function addOptionsToSelect2(data) {			
+			data.forEach(function(item) {			
+			var newOption = new Option(item.text, item.id, false, false);
+			// Append it to the Select2 element
+			$('#mySelect').append(newOption);
+			});
+		}	
+		
+		var peopleNames=getNames(data);	
+		peopleNames.sort((a,b) => (a.text > b.text) ? 1 : ((b.text > a.text) ? -1 : 0));		
+					
+	
+		
+		  // Add options to Select2
+		addOptionsToSelect2(peopleNames);
+			
+		// jquery matcher
+		
+		function prefixMatcher(params, data) {
+			// If there are no search terms, return all data
+			if ($.trim(params.term) === '') {
+				return data;
+			}
+
+			// Convert the search term to uppercase to make the search case-insensitive
+			var term = params.term.toUpperCase();
+
+			// Check if the text of the option starts with the search term
+			if (data.text.toUpperCase().startsWith(term)) {
+				return data;
+			}
+
+			// Return null if the text does not start with the search term
+			return null;
+		}
+	
+		 $('#mySelect').select2({
+			placeholder: "Search Names",
+			minimumInputLength: 1,
+			maximumSelectionLength: 5,
+			matcher: prefixMatcher,
+			language: {
+                    inputTooShort: function () {
+                        return "Type names"; // Return an empty string to not show any message
+						} 
+					}
+		 });
+		 
+		 
+		
+			 
+	 
+		
+		// get id of selected names
+			
+		 <!-- $('#mySelect').on('change', function() { -->
+			<!-- // Get selected options -->
+			<!-- var selectedOptions = $(this).val(); -->
+			<!-- // Alert the selected option IDs -->
+			<!-- if (selectedOptions.length > 0) { -->
+				<!-- alert('Selected IDs: ' + selectedOptions.join(', ')); -->
+			<!-- } else { -->
+				<!-- alert('No options selected'); -->
+			<!-- } -->
+			
+			
+		<!-- }); -->
+			
+		
+		 $('#mySelect').on('change', function() {
+			// Get selected options
+			var selectedOptions = $(this).find(':selected');
+			// Alert the selected option IDs
+			 var selectedTexts = [];
+			
+			if (selectedOptions.length > 0) {
+				var count=0;
+				 $('#mySelect').find(':selected').each(function() {
+				 count++;
+				 var currentNode=searchParentById($(this).val());				 
+				 var parentNode=searchParentById(currentNode.parent);
+                    selectedTexts.push(count+". " + $(this).text()+ "-- Father:" + parentNode.name);
+                });		
+				showCustomAlert("Selected People", selectedTexts.join('\n\n '));
+			} 
+		});
+		
+		
+		
+		
+		
+		
+		
+		// other script
+		
+		function showCustomAlert(title, message) {
+            let customAlert = 
+                    document.getElementById('customAlert');
+            let customAlertTitle = 
+                    document.getElementById('customAlertTitle');
+            let customAlertMessage = 
+                    document.getElementById('customAlertMessage');
+
+            customAlertTitle.innerText = title;
+            customAlertMessage.innerText = message;
+            customAlert.style.display = 'block';
+        }
+
+        function hideCustomAlert() {
+            let customAlert = document.getElementById('customAlert');
+            customAlert.style.display = 'none';
+        }
+	
+    </script>
+</body>
+</html>

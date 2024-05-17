@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select2 Limit Results Example</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Select2 CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</head>
+<body>
+    <select id="mySelect2" style="width: 200px;"></select>
+
+    <script>
+        $(document).ready(function() {
+            // JSON data structure
+            var jsonData = [
+                { id: 1, text: 'aApple' },
+                { id: 2, text: 'aBanana' },
+                { id: 3, text: 'aCherry' },
+                { id: 4, text: 'aDate' },
+                { id: 5, text: 'aGrape' },
+                { id: 6, text: 'aOrange' },
+                { id: 7, text: 'aPeach' },
+                { id: 8, text: 'aMango' },
+                { id: 9, text: 'aPineapple' },
+                { id: 10, text: 'aStrawberry' },
+                { id: 11, text: 'aWatermelon' },
+                { id: 12, text: 'aBlueberry' },
+                { id: 13, text: 'aRaspberry' }
+            ];
+
+            // Custom matcher function to search only from the beginning of the text
+            function prefixMatcher(params, data) {
+                // If there are no search terms, return all data
+                if ($.trim(params.term) === '') {
+                    return data;
+                }
+
+                // Convert the search term to uppercase to make the search case-insensitive
+                var term = params.term.toUpperCase();
+
+                // Check if the text of the option starts with the search term
+                if (data.text.toUpperCase().startsWith(term)) {
+                    return data;
+                }
+
+                // Return null if the text does not start with the search term
+                return null;
+            }
+
+            // Initialize Select2
+            $('#mySelect2').select2({
+                data: jsonData,
+                matcher: prefixMatcher,
+                language: {
+                    inputTooShort: function () {
+                        return ""; // Return an empty string to not show any message
+                    }
+                },
+                templateResult: function (result) {
+                    // Return only if the result is not empty and has a text property
+                    if (!result.id) {
+                        return result.text;
+                    }
+                    return result.text;
+                },
+                templateSelection: function (data) {
+                    return data.text;
+                }
+            });
+
+            // Limit the number of results displayed in the dropdown to 5
+            $('#mySelect2').on('select2:open', function() {
+                var results = $('#mySelect2').data('select2').$results;
+                results.find('.select2-results__option').each(function(index) {
+                    if (index >= 5) {
+                        $(this).hide();
+                    }
+                });
+            });
+
+            <!-- // Ensure all results are shown when the dropdown is closed -->
+            <!-- $('#mySelect2').on('select2:close', function() { -->
+                <!-- var results = $('#mySelect2').data('select2').$results; -->
+                <!-- results.find('.select2-results__option').show(); -->
+            <!-- }); -->
+        });
+    </script>
+</body>
+</html>
