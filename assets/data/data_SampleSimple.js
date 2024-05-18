@@ -1,10 +1,10 @@
 data = [
   { "id" : "AncestorNANA", "name" : "Ancestor", "gender" : "Male", "parent" : "null", "spouse" : "NA", "gen" : "-1"},
-  { "id" : "ArghakanchiAnceNA", "name" : "Arghakanchi", "gender" : "Male", "parent" : "AncestorNANA", "spouse" : "NA", "gen" : "0"},
+  { "id" : "ArghakhanchiAnceNA", "name" : "Arghakhanchi", "gender" : "Male", "parent" : "AncestorNANA", "spouse" : "NA", "gen" : "0"},
   { "id" : "GulmiAnceNA", "name" : "Gulmi", "gender" : "Male", "parent" : "AncestorNANA", "spouse" : "NA", "gen" : "0"},
   { "id" : "KabhareplanchowkAnceNA", "name" : "Kabhareplanchowk", "gender" : "Male", "parent" : "AncestorNANA", "spouse" : "NA", "gen" : "0"},
   { "id" : "PalpaAnceNA", "name" : "Palpa", "gender" : "Male", "parent" : "AncestorNANA", "spouse" : "NA", "gen" : "0"},
-  { "id" : "Arghakhanchi-DhanchaurArghNA", "name" : "Arghakhanchi-Dhanchaur", "gender" : "Male", "parent" : "null", "spouse" : "NA", "gen" : "0"},
+  { "id" : "Arghakhanchi-DhanchaurArghNA", "name" : "Arghakhanchi-Dhanchaur", "gender" : "Male", "parent" : "ArghakhanchiAnceNA", "spouse" : "NA", "gen" : "0"},
   { "id" : "NayanArghNA", "name" : "Nayan Singh", "gender" : "Male", "parent" : "Arghakhanchi-DhanchaurArghNA", "spouse" : "Padam Kumari", "gen" : "1"},
   { "id" : "BakhatawarNayaPada", "name" : "Bakhatawar", "gender" : "Male", "parent" : "NayanArghNA", "spouse" : "Unknown", "gen" : "2"},
   { "id" : "HemNayaPada", "name" : "Hem Karna", "gender" : "Male", "parent" : "NayanArghNA", "spouse" : "Unknown", "gen" : "2"},

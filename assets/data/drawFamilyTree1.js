@@ -23,9 +23,8 @@ if (parent) {
 
 function getNames(data,leaves) {		
 	for (var d in data)  {
-		
-	var name=data[d].name;		
-		leaves.push({id: data[d].id,text:name});
+	var name=data[d].name;	 
+		leaves.push({id: data[d].id,text:name});			
 	}		
 	return leaves;
 }
@@ -35,8 +34,7 @@ function getNames(data,leaves) {
 var peopleNames=getNames(data,[]);	
 peopleNames.sort((a,b) => (a.text > b.text) ? 1 : ((b.text > a.text) ? -1 : 0));
 
-console.log(peopleNames.length);
-
+console.log(peopleNames);
 // ***********************************************************
 
 var zoom = d3.behavior.zoom()
@@ -46,7 +44,7 @@ var zoom = d3.behavior.zoom()
 
 //basically a way to get the path to an object
 function searchTree(obj,search,path){
-	if(obj.id === search){ //if search is found return, add the object to the path and return it
+	if(obj.name === search){ //if search is found return, add the object to the path and return it
 		path.push(obj);
 		return path;
 	}
@@ -164,33 +162,23 @@ collapse(root);
 update(root);
 
 
-
 //init search box
 $("#search").select2({
 	data: peopleNames,
 	containerCssClass: "search"
 });
 
-
-var xxx=$("#search").select2();
-console.log(xxx);
-
-// alert("number of items-->    " + $("#search").select2("data").length);
-
 //attach search box listener
 $("#search").on("select2-selecting", function(e) {
-	var paths = searchTree(root,e.object.id,[]);
+	var paths = searchTree(root,e.object.text,[]);
 	if(typeof(paths) !== "undefined"){
 		openPaths(paths);
-		 //alert("Father--> " + e.object.father + " | Mother--> " + e.object.mother);
-		 alert(e.object.text + " Tree Found");
 	}
 	else{
 		alert(e.object.text+" not found!");
 	}
 });
 
-// console.log(root);
 
 d3.select(self.frameElement).style("height", "800px");
 
@@ -203,8 +191,7 @@ function update(source) {
 	nodes.forEach(function(d) { d.y = d.depth * 500; });
 	nodes.forEach(function(d) { d.x = d.x * 2.0; });
 
-	// Update the nodesâ€¦yes
-	
+	// Update the nodesâ€¦
 	var node = svg.selectAll("g.node")
 		.data(nodes, function(d) { return d.id || (d.id = ++i); });
 
@@ -310,7 +297,6 @@ function zoomed(e) {
 }
 
 
-
 function expand(d){   
 if (d._children) {        
 	d.children = d._children;
@@ -343,5 +329,3 @@ function expandTree() {
 }
 
 expandTree();
-
-
